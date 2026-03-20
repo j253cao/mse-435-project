@@ -1,0 +1,5 @@
+numpy
+pandas
+scipy
+python-docx
+pymupdf
