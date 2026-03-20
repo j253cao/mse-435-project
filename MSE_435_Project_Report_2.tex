@@ -1,0 +1,500 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{MSE 435 -- Progress Report 2\\[0.5em]
+\large Examination Room Scheduling in an Outpatient Clinic}
+\author{
+  Johnny Cao: 20949892 \\
+  Chintan Desai: 20938455 \\
+  Anastan Gnanapragasam: 20948196
+}
+\date{MSE 435 \\ Winter 2026}
+
+\begin{document}
+
+\maketitle
+
+% ─────────────────────────────────────────────
+\section{Problem Overview}
+
+The goal of this project is to assign appointments to examination rooms and start times in a way
+that respects operational constraints of the clinic while minimizing unnecessary room switching by
+healthcare providers. The clinic operates within fixed hours and includes administrative blocks and
+a lunch closure. To model this accurately, time is discretized into 15-minute intervals. This provides
+enough granularity to represent appointment durations while keeping the model manageable. We
+first formulate a time-indexed mixed-integer program. Since this model can grow large, we then
+reformulate it using column generation.
+
+% ─────────────────────────────────────────────
+\section{Time-Indexed Assignment Formulation}
+
+\subsection*{Sets}
+\begin{itemize}
+  \item $I$ = set of appointments
+  \item $P$ = set of providers
+  \item $R$ = set of examination rooms
+  \item $T$ = set of 15-minute time slots
+\end{itemize}
+
+Each appointment $i \in I$ has duration $d_i$ (in time slots) and a designated provider $p(i)$.
+
+\subsection*{Parameters}
+\begin{itemize}
+  \item $A_{pt} = 1$ if provider $p$ is available at time $t$
+  \item $C_{ir} = 1$ if appointment $i$ can use room $r$
+  \item $\delta_{rr'} =$ distance between rooms $r$ and $r'$
+\end{itemize}
+
+\subsection*{Decision Variable}
+\[
+  x_{itr} =
+  \begin{cases}
+    1 & \text{if appointment } i \text{ starts at time } t \text{ in room } r \\
+    0 & \text{otherwise}
+  \end{cases}
+\]
+
+\subsection*{Objective Function}
+
+The main operational objective is to reduce provider movement between rooms. We model total
+travel distance between consecutive appointments for each provider. This encourages compact room
+usage and discourages unnecessary switching. Introducing auxiliary variables $y_{ii'rr'}$ to represent
+direct transitions between appointments, we minimize:
+\[
+  \min \sum_{p \in P} \sum_{\substack{i,i' \in I \\ p(i)=p(i')=p}} \sum_{r,r' \in R} \delta_{rr'}\, y_{ii'rr'}.
+\]
+
+We define
+\[
+  y_{ii'rr'} =
+  \begin{cases}
+    1 & \text{if appointment } i \text{ is immediately followed by appointment } i' \text{ for the same provider,} \\
+      & \text{with } i \text{ in room } r \text{ and } i' \text{ in room } r' \\
+    0 & \text{otherwise.}
+  \end{cases}
+\]
+
+In this progress report, we treat these transition indicators as being derived from the chosen
+appointment start-time assignments; in implementation, they are computed from the final schedule
+produced by the model (or enforced via additional sequencing constraints when needed).
+
+\subsection*{Constraints}
+
+\paragraph{(1) Each appointment scheduled exactly once.}
+This ensures full coverage.
+\[
+  \sum_{t \in T} \sum_{r \in R} x_{itr} = 1 \qquad \forall i \in I.
+\]
+
+\paragraph{(2) Room capacity constraints.}
+A room cannot host overlapping appointments:
+\[
+  \sum_{i \in I} \sum_{\tau \in T:\, \tau \le t < \tau + d_i} x_{i\tau r} \le 1
+  \qquad \forall r \in R,\, t \in T.
+\]
+
+\paragraph{(3) Provider capacity constraints.}
+A provider cannot see more than one patient at a time:
+\[
+  \sum_{i:\, p(i)=p} \sum_{r \in R} \sum_{\tau \in T:\, \tau \le t < \tau + d_i} x_{i\tau r} \le 1
+  \qquad \forall p \in P,\, t \in T.
+\]
+
+\paragraph{(4) Provider availability.}
+Appointments must lie fully within provider working hours:
+\[
+  x_{itr} = 0 \quad \text{if } \{t, \ldots, t + d_i - 1\} \not\subseteq A_{p(i)}.
+\]
+Equivalently, we enforce:
+\[
+  x_{itr} \le A_{p(i),t'} \qquad \forall i \in I,\, \forall r \in R,\, \forall t \in T,\, \forall t' \in \{t, \ldots, t + d_i - 1\}.
+\]
+
+\paragraph{(5) Room compatibility.}
+These constraints define the feasible region of the model.
+\[
+  x_{itr} = 0 \quad \text{if } C_{ir} = 0.
+\]
+\[
+  x_{itr} \le C_{ir} \qquad \forall i \in I,\, \forall t \in T,\, \forall r \in R.
+\]
+
+% ─────────────────────────────────────────────
+\section{Column Generation Reformulation}
+
+Although the above formulation is intuitive, the number of variables is on the order of
+$|I||T||R|$, which becomes large for weekly planning. To improve scalability, we reformulate
+the problem using Dantzig--Wolfe decomposition.
+
+\subsection*{Column Definition}
+
+For each provider-day block $g$, let $K_g$ denote the set of all feasible daily schedules for
+that block. Each column $k \in K_g$ represents:
+\begin{itemize}
+  \item a feasible ordering of that block's appointments
+  \item assigned start times and rooms
+  \item no overlaps
+  \item compliance with availability and compatibility constraints
+\end{itemize}
+
+A provider-day block is the basic unit in the implementation. Because the raw appointment
+data contains same-provider overlaps on some days, each original provider-day is refined into
+one or more serial blocks before column generation. This is a practical refinement in Part 3
+and does not change the master problem structure.
+
+\subsection*{Column Cost}
+
+If all appointments occur in the same room, the cost is zero. The cost of a schedule $k$ is
+the total travel distance between rooms in that schedule:
+\[
+  c_k = \sum_{\text{room transitions within schedule } k} \delta_{rr'}.
+\]
+
+\subsection*{Set Partitioning}
+
+We now choose exactly one schedule per provider-day block.
+
+\paragraph{Objective Function.}
+\[
+  \min \sum_{g} \sum_{k \in K_g} c_k \lambda_k
+\]
+
+\paragraph{Subject to:}
+
+\noindent\textit{Appointment coverage}
+\[
+  \sum_{g} \sum_{k \in K_g} a_{ik} \lambda_k = 1 \qquad \forall i \in I.
+\]
+
+\noindent\textit{One schedule per provider-day block}
+\[
+  \sum_{k \in K_g} \lambda_k = 1 \qquad \forall g.
+\]
+
+\noindent\textit{Clinic-wide room capacity}
+\[
+  \sum_{g} \sum_{k \in K_g} b_{krt} \lambda_k \le 1 \qquad \forall r \in R,\, t \in T.
+\]
+\[
+  \lambda_k \in \{0, 1\}.
+\]
+
+In practice, $K_g$ is very large, so we solve a restricted master problem (RMP) using a small
+subset of columns and add new columns via pricing.
+
+% ─────────────────────────────────────────────
+\section{Solution Methodology: Column Generation Approach}
+
+To solve large instances of the scheduling problem, we use column generation based on the
+set-partitioning reformulation above. The idea is to begin with a restricted master problem
+containing only a small number of feasible schedules for each provider-day block, and then
+iteratively generate new schedules only when they can improve the objective.
+
+\subsection*{Step 1: Initialize a Restricted Master Problem}
+
+We begin with a small subset of columns for each block, denoted $K^0_g \subset K_g$, such
+that every appointment is covered by at least one initial schedule. These initial columns are
+constructed using simple feasible patterns, such as assigning each block's appointments in
+chronological order to currently allowable rooms.
+
+The initial restricted master problem is:
+\[
+  \min \sum_{g} \sum_{k \in K^0_g} c_k \lambda_k
+\]
+subject to
+\[
+  \sum_{g} \sum_{k \in K^0_g} a_{ik} \lambda_k = 1 \qquad \forall i \in I,
+\]
+\[
+  \sum_{k \in K^0_g} \lambda_k = 1 \qquad \forall g,
+\]
+\[
+  \sum_{g} \sum_{k \in K^0_g} b_{krt} \lambda_k \le 1 \qquad \forall r \in R,\, t \in T,
+\]
+\[
+  \lambda_k \ge 0.
+\]
+At this stage, we solve the LP relaxation of the master problem.
+
+\subsection*{Step 2: Solve the Restricted Master Problem}
+
+Solving the LP relaxation of the RMP gives dual values associated with the master constraints. Let:
+\begin{itemize}
+  \item $\pi_i$ be the dual variable for appointment coverage constraint $i$
+  \item $\sigma_g$ be the dual variable for the one-schedule-per-block constraint for block $g$
+  \item $\mu_{rt}$ be the dual variable for the room-capacity constraint for room $r$ and time slot $t$
+\end{itemize}
+
+These dual values are then used to define the reduced cost of a potential new schedule.
+
+\subsection*{Step 3: Solve Provider-Day Pricing Subproblems}
+
+For each provider-day block $g$, we solve a pricing subproblem to search for a new feasible
+schedule with negative reduced cost. The reduced cost of a schedule $k \in K_g$ is:
+\[
+  \bar{c}_k = c_k - \sum_{i \in I} \pi_i a_{ik} - \sigma_g + \sum_{r \in R} \sum_{t \in T} \mu_{rt} b_{krt}.
+\]
+
+Thus, for each block $g$, the pricing problem is:
+\[
+  \min_{k \in K_g} \left( c_k - \sum_{i \in I} \pi_i a_{ik} - \sigma_g + \sum_{r \in R} \sum_{t \in T} \mu_{rt} b_{krt} \right).
+\]
+
+Each pricing subproblem generates a feasible schedule that respects appointment durations,
+provider availability, room compatibility, and no-overlap requirements. If the minimum reduced
+cost is negative, then that schedule can improve the current master solution and is added to the RMP.
+
+\subsection*{Step 4: Add Improving Columns and Repeat}
+
+After solving the pricing subproblems for all provider-day blocks, any schedule with negative
+reduced cost is added to the restricted master problem. The updated RMP is then re-solved,
+producing a new set of dual values. This process is repeated until no block can generate a
+schedule with negative reduced cost.
+
+At that point, the LP relaxation of the full master problem has been solved.
+
+\subsection*{Step 5: Recover an Integer Solution}
+
+The solution obtained from column generation is generally fractional because the restricted
+master problem is solved as an LP relaxation. To obtain a feasible scheduling plan, we then
+enforce integrality on the master variables:
+\[
+  \lambda_k \in \{0, 1\}.
+\]
+An exact approach is to apply branch-and-bound or branch-and-cut on the master problem
+after column generation has converged. In the implementation, the final generated column pool
+is fixed and the resulting restricted integer master problem is solved directly.
+
+\subsection*{Step 6: Stopping Criteria}
+
+The algorithm ends when:
+\begin{itemize}
+  \item no pricing subproblem generates a column with negative reduced cost, and
+  \item the resulting restricted integer master problem has been solved to feasibility or optimality.
+\end{itemize}
+
+The final schedule is the best feasible solution obtained from the selected provider-day schedules.
+
+\subsection*{Remark}
+
+Room preference is tracked as a practical metric in the implementation, but the optimization
+objective minimized by the master problem is room-switch distance only. Preference penalties
+are reported separately in the results as a secondary schedule-quality metric.
+
+% ─────────────────────────────────────────────
+\section{Solving the Model and Practical Refinements}
+
+We solve the resulting model in two stages. First, the time-indexed formulation is solved on
+reduced daily instances to verify that the feasibility constraints and objective behave as intended.
+Second, the full weekly problem is solved using the column generation framework, with additional
+refinements to ensure that the selected schedules are practical for clinic use.
+
+\subsection*{Data Preprocessing and Feasibility Filtering}
+
+The appointment data is first converted into the discrete time-slot representation used in the
+model. Appointment durations are rounded up to the nearest 15-minute interval. Cancelled and
+deleted appointments are removed from the active demand set, while no-show appointments are
+retained because they still consume capacity at the planning stage.
+
+Next, infeasible appointment placements are filtered out before optimization. Any start time
+that causes an appointment to overlap with the clinic lunch closure or administrative blocks is
+removed from the feasible placement set when generating columns. In addition, the provider-room
+assignment tables are converted into time-dependent feasibility rules so that AM/PM room
+restrictions are respected when building feasible schedules. This preprocessing step reduces the
+size of the feasible region and ensures that the optimization only considers implementable assignments.
+
+Because the raw data contains overlapping appointments for the same provider on the same
+day, each original provider-day is refined into the minimum number of non-overlapping serial
+blocks before solving. Column generation is then carried out on these refined serial blocks. This
+is the main practical refinement used to make the model consistent with the real data.
+
+\subsection*{Baseline Validation on Reduced Instances}
+
+Before solving the full problem, the time-indexed model is used on reduced instances as a
+validation model. This serves two purposes. First, it confirms that the coverage, provider
+capacity, room capacity, availability, and compatibility constraints correctly produce feasible
+schedules. Second, it provides a benchmark that can be compared against the column generation
+solution on smaller blocks.
+
+In the implementation, small refined blocks are solved by both the validation model and the
+pricing-based schedule generator, and the solutions are compared. The final results show zero
+validation mismatches in both weeks.
+
+\subsection*{Initial Column Generation}
+
+To initialize the restricted master problem, we generate a feasible starting schedule for each
+refined provider-day block in the planning horizon. Appointments are ordered chronologically,
+then assigned to the earliest feasible start time and the most preferred allowable room. If the
+preferred room is unavailable, the nearest compatible room is chosen using the room distance matrix.
+
+This produces an initial set of columns that is feasible and operationally reasonable, while
+also giving the master problem a meaningful starting point.
+
+\subsection*{Pricing Subproblem Implementation}
+
+In the implementation, pricing is solved separately for each refined provider-day block. To
+produce meaningful schedules and keep the subproblem tractable, the chronological order of
+appointments within each block is preserved, while room assignments are optimized around that order.
+
+Let the appointments for a given block be indexed in chronological order as $i_1, \ldots, i_m$.
+For each appointment $i_q$, we consider only feasible placements $(t, r)$ that satisfy duration,
+provider availability, room compatibility, and clinic operating rules. The pricing problem is then
+solved by dynamic programming.
+
+Define $F_q(t, r)$ as the minimum reduced cost of scheduling the first $q$ appointments, where
+appointment $i_q$ starts at time $t$ in room $r$. For the first appointment:
+\[
+  F_1(t, r) = -\pi_{i_1} - \sigma_g + \sum_{u=t}^{t+d_{i_1}-1} \mu_{ru}.
+\]
+
+For $q = 2, \ldots, m$, the recurrence is
+\[
+  F_q(t, r) = -\pi_{i_q} + \sum_{u=t}^{t+d_{i_q}-1} \mu_{ru}
+  + \min_{(s,r') \prec (t,r)} \left\{ F_{q-1}(s, r') + \delta_{r'r} \right\},
+\]
+where $(s, r') \prec (t, r)$ means that appointment $i_{q-1}$ placed at $(s, r')$ finishes before
+appointment $i_q$ starts at $t$, and both placements are feasible.
+
+The reduced cost of the best full schedule for block $g$ is then
+\[
+  \bar{c}_g = \min_{t,r} F_m(t, r).
+\]
+If $\bar{c}_g < 0$, the corresponding schedule is added to the restricted master problem as a new
+column. This process is repeated until no pricing problem can produce a schedule with negative
+reduced cost.
+
+\subsection*{Final Integer Solution}
+
+After column generation terminates, the final column pool is fixed and the restricted master
+problem is re-solved with integrality enforced:
+\[
+  \lambda_k \in \{0, 1\}.
+\]
+This restricted integer master problem selects the final block schedules while respecting
+clinic-wide room capacity. Solving the integer master on the generated column pool gives a
+complete feasible weekly schedule.
+
+\subsection*{Practical Refinements for Meaningful Schedules}
+
+Several refinements are used so that the final schedules are useful in practice rather than only
+mathematically feasible.
+
+First, the pricing routine preserves each block's within-day appointment order. This avoids
+unrealistic patient reordering and makes the generated schedules easier to interpret operationally.
+
+Second, when multiple columns have similar reduced cost, preference is given to schedules with
+fewer room switches and stronger consistency with the provider's preferred room assignment.
+This keeps providers in the same room whenever possible and reduces unnecessary movement.
+
+Third, if the final restricted integer master problem is infeasible or produces overly fragmented
+room usage, additional columns are generated by relaxing room preference while keeping all
+hard feasibility constraints unchanged. This provides a controlled refinement mechanism without
+changing the underlying model structure.
+
+\subsection*{Output Schedule}
+
+The final output of the solution procedure is a feasible weekly clinic schedule specifying, for
+each appointment, its assigned provider, start time, end time, and examination room. These
+schedules can then be summarized using provider-day tables and Gantt-style visualizations for
+managerial interpretation in the next stage of the project.
+
+% ─────────────────────────────────────────────
+\section{Computational Results}
+
+\subsection*{Instance Characteristics}
+
+After removing cancelled and deleted appointments, Week 1 contained 427 active appointments
+across 20 providers and 5 clinic days, while Week 2 contained 499 active appointments across 23
+providers and 5 clinic days. The raw booked data was not directly serial by provider: Week 1
+contained 73 same-provider overlaps in the input, while Week 2 contained 110. Similarly, 44
+appointments in Week 1 and 58 appointments in Week 2 touched administrative or lunch blocks
+in the raw data, which justified the feasibility filtering step in the implementation.
+
+At the provider-day level, Week 1 contained 64 original provider-day blocks that were refined
+into 94 serial blocks, while Week 2 contained 79 original provider-day blocks that were refined
+into 122 serial blocks. This confirms that the refinement step was necessary to make the
+column-generation model workable on the real appointment files.
+
+\subsection*{Duration and Daily Demand Structure}
+
+The demand in both weeks was dominated by short appointments. For Week 1, the durations
+converted into slot counts as follows: 224 one-slot appointments, 182 two-slot appointments,
+8 three-slot appointments, 11 four-slot appointments, 1 six-slot appointment, and 1 eight-slot
+appointment. For Week 2, the durations converted into 296 one-slot appointments, 171 two-slot
+appointments, 12 three-slot appointments, and 20 four-slot appointments.
+
+Daily demand was also uneven. Week 1 active appointments by day were 125, 4, 108, 120,
+and 70 from Monday to Friday. Week 2 active appointments by day were 141, 132, 104, 42, and
+80. These patterns support solving the model by refined provider-day blocks rather than as one
+monolithic weekly model.
+
+\subsection*{Column Generation Performance}
+
+Table~\ref{tab:results} summarizes the main computational results.
+
+The column pool grew meaningfully in both weeks, from 94 to 160 columns in Week 1 and from
+122 to 247 columns in Week 2. The method converged in 8 iterations for Week 1 and 13
+iterations for Week 2. In both cases, the final LP objective matched the final integer objective,
+indicating that the final restricted master solution was already integral at convergence.
+
+\subsection*{Schedule Quality Metrics}
+
+The implemented optimization objective minimizes room-switch distance only. For that reason,
+the final integer objective should be interpreted as the optimized room-switch cost from the
+restricted master problem. Room preference penalties were tracked separately as secondary
+metrics and were not part of the master objective.
+
+The final reported schedule metrics were:
+\begin{itemize}
+  \item Week 1: final LP objective $= 51.9$; final integer objective $= 51.9$; room-switch distance $= 339.7$; preference penalty $= 318.7$; runtime $= 176.87$ s
+  \item Week 2: final LP objective $= 118.8$; final integer objective $= 118.8$; room-switch distance $= 600.9$; preference penalty $= 525.3$; runtime $= 311.39$ s
+\end{itemize}
+
+These values are larger than the final master objective because they are computed after schedule
+reconstruction and include post-processed schedule-quality measures rather than only the
+switch-only objective optimized by the master problem. They are therefore reported separately
+and should not be added directly to the final integer objective.
+
+\begin{table}[h]
+  \centering
+  \caption{Column generation results by week.}
+  \label{tab:results}
+  \begin{tabular}{lrr}
+    \toprule
+    Metric & Week 1 & Week 2 \\
+    \midrule
+    Active appointments              & 427    & 499    \\
+    Providers                        & 20     & 23     \\
+    Original provider-day blocks     & 64     & 79     \\
+    Refined serial blocks            & 94     & 122    \\
+    Initial columns                  & 94     & 122    \\
+    Final column pool size           & 160    & 247    \\
+    Column generation iterations     & 8      & 13     \\
+    Final LP objective               & 51.9   & 118.8  \\
+    Final integer objective          & 51.9   & 118.8  \\
+    Runtime (seconds)                & 176.87 & 311.39 \\
+    Validated small blocks           & 74     & 99     \\
+    Validation mismatches            & 0      & 0      \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection*{Interpretation}
+
+The results show that the refined column-generation approach was able to solve both weekly
+instances and produce feasible schedules with zero validation mismatches on the tested small
+blocks. The implementation also handled the main practical complications in the data, namely
+overlapping same-provider appointments and partial-day room restrictions, by refining
+provider-day blocks before optimization and by filtering infeasible placements during schedule generation.
+
+Overall, the computational results support the choice of a decomposed set-partitioning model
+over a direct full-week time-indexed formulation. The number of active appointments, the
+uneven daily demand, and the need to enforce clinic-wide room capacity all make the large-scale
+reformulation more appropriate for the actual clinic scheduling data.
+
+\end{document}

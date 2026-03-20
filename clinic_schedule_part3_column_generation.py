@@ -499,7 +499,20 @@ def solve_restricted_integer_master(columns_by_block: Dict[str, List[Column]], a
     return res, selected, cols_flat
 
 
-def pricing_for_block(block_df: pd.DataFrame, block_key: str, pi: dict, sigma: dict, mu: dict, room_map: dict, dist: np.ndarray, existing_signatures: set, col_counter: int) -> Optional[Column]:
+def pricing_for_block(
+    block_df: pd.DataFrame,
+    block_key: str,
+    pi: dict,
+    sigma: dict,
+    mu: dict,
+    room_map: dict,
+    dist: np.ndarray,
+    existing_signatures: set,
+    col_counter: int,
+    occ_pen_cache: dict,
+    allowed_rooms_cache: dict,
+    pref_pen_cache: dict,
+) -> Optional[Column]:
     provider = block_df["Primary Provider"].iloc[0]
     day_key = block_df["day_key"].iloc[0]
     date = block_df["date"].iloc[0]
@@ -510,9 +523,21 @@ def pricing_for_block(block_df: pd.DataFrame, block_key: str, pi: dict, sigma: d
     first = appts.iloc[0]
     q_states = {}
     for st in valid_start_times(date, int(first["dur_slots"]), first["orig_start"]):
-        for room in allowed_rooms(provider, date, st, room_map):
-            occ_pen = sum(mu.get((room, st + pd.Timedelta(minutes=15 * u)), 0.0) for u in range(int(first["dur_slots"])))
-            pref = room_preference_penalty(provider, date, st, room, room_map, dist)
+        allowed_list = allowed_rooms_cache.get((provider, date.day_name(), st))
+        if allowed_list is None:
+            allowed_list = allowed_rooms(provider, date, st, room_map)
+            allowed_rooms_cache[(provider, date.day_name(), st)] = allowed_list
+        for room in allowed_list:
+            dur_slots = int(first["dur_slots"])
+            occ_key = (room, st, dur_slots)
+            if occ_key not in occ_pen_cache:
+                occ_pen_cache[occ_key] = sum(mu.get((room, st + pd.Timedelta(minutes=15 * u)), 0.0) for u in range(dur_slots))
+            occ_pen = occ_pen_cache[occ_key]
+
+            pref_key = (provider, date, st, room)
+            if pref_key not in pref_pen_cache:
+                pref_pen_cache[pref_key] = room_preference_penalty(provider, date, st, room, room_map, dist)
+            pref = pref_pen_cache[pref_key]
             rc = -pi[first["appt_id"]] + occ_pen
             end = st + pd.Timedelta(minutes=15 * int(first["dur_slots"]))
             key = (st, room)
@@ -530,9 +555,21 @@ def pricing_for_block(block_df: pd.DataFrame, block_key: str, pi: dict, sigma: d
         for (prev_st, prev_room), (prev_rc, prev_pref, prev_bp, prev_end) in prev_states.items():
             earliest = max(cur["orig_start"], prev_end)
             for st in valid_start_times(date, int(cur["dur_slots"]), earliest):
-                for room in allowed_rooms(provider, date, st, room_map):
-                    occ_pen = sum(mu.get((room, st + pd.Timedelta(minutes=15 * u)), 0.0) for u in range(int(cur["dur_slots"])))
-                    pref = prev_pref + room_preference_penalty(provider, date, st, room, room_map, dist)
+                allowed_list = allowed_rooms_cache.get((provider, date.day_name(), st))
+                if allowed_list is None:
+                    allowed_list = allowed_rooms(provider, date, st, room_map)
+                    allowed_rooms_cache[(provider, date.day_name(), st)] = allowed_list
+                for room in allowed_list:
+                    dur_slots = int(cur["dur_slots"])
+                    occ_key = (room, st, dur_slots)
+                    if occ_key not in occ_pen_cache:
+                        occ_pen_cache[occ_key] = sum(mu.get((room, st + pd.Timedelta(minutes=15 * u)), 0.0) for u in range(dur_slots))
+                    occ_pen = occ_pen_cache[occ_key]
+
+                    pref_key = (provider, date, st, room)
+                    if pref_key not in pref_pen_cache:
+                        pref_pen_cache[pref_key] = room_preference_penalty(provider, date, st, room, room_map, dist)
+                    pref = prev_pref + pref_pen_cache[pref_key]
                     rc = prev_rc - pi[cur["appt_id"]] + occ_pen + dist[ROOM_TO_IDX[prev_room], ROOM_TO_IDX[room]]
                     end = st + pd.Timedelta(minutes=15 * int(cur["dur_slots"]))
                     key = (st, room)
@@ -629,12 +666,32 @@ def solve_week_column_generation(active_df: pd.DataFrame, room_map: dict, dist: 
     sigs = {b: {columns_by_block[b][0].signature} for b in columns_by_block}
     cg_log = []
     col_counter = 1
+    # Caches speed up pricing: repeated (provider, day, start) -> allowed rooms and
+    # (provider, day, start, room) -> preference penalties.
+    allowed_rooms_cache: dict = {}
+    pref_pen_cache: dict = {}
 
     for it in range(1, MAX_CG_ITER + 1):
+        it_t0 = time.perf_counter()
         rmp_res, cols_flat, pi, sigma, mu = solve_rmp_lp(columns_by_block, refined_df, room_slots)
+        # Pricing occupancy penalties depend on mu, so the cache must reset each iteration.
+        occ_pen_cache: dict = {}
         added = 0
         for block_key, block_df in block_dfs.items():
-            col = pricing_for_block(block_df, block_key, pi, sigma, mu, room_map, dist, sigs[block_key], col_counter)
+            col = pricing_for_block(
+                block_df,
+                block_key,
+                pi,
+                sigma,
+                mu,
+                room_map,
+                dist,
+                sigs[block_key],
+                col_counter,
+                occ_pen_cache,
+                allowed_rooms_cache,
+                pref_pen_cache,
+            )
             if col is not None:
                 columns_by_block[block_key].append(col)
                 sigs[block_key].add(col.signature)
@@ -647,6 +704,11 @@ def solve_week_column_generation(active_df: pd.DataFrame, room_map: dict, dist: 
                 "column_pool_size": int(sum(len(v) for v in columns_by_block.values())),
                 "columns_added": int(added),
             }
+        )
+        print(
+            f"[{week_name}] CG iter {it}: "
+            f"RMP obj={float(rmp_res.fun):.3f}, pool={int(sum(len(v) for v in columns_by_block.values()))}, "
+            f"added={int(added)} in {time.perf_counter() - it_t0:.1f}s"
         )
         if added == 0:
             break
@@ -697,12 +759,19 @@ def instance_summary(active_df: pd.DataFrame) -> dict:
 
 def main() -> None:
     base = Path(__file__).resolve().parent
-    dist = parse_distance_matrix(base / "project435Winter2026.pdf")
+    inputs_dir = base / "inputs"
+    if not inputs_dir.exists():
+        raise FileNotFoundError(f"Missing inputs folder: {inputs_dir}")
+    run_tag = time.strftime("%Y%m%d_%H%M%S")
+    output_dir = base / "outputs" / f"run_{run_tag}"
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-    room_map_w1 = load_room_assignments(base / "ProviderRoomAssignmentWeek1.docx")
-    room_map_w2 = load_room_assignments(base / "ProviderRoomAssignmentWeek2.docx")
-    week1 = load_appointments(base / "AppointmentDataWeek1.csv", "W1")
-    week2 = load_appointments(base / "AppointmentDataWeek2.csv", "W2")
+    dist = parse_distance_matrix(inputs_dir / "project435Winter2026.pdf")
+
+    room_map_w1 = load_room_assignments(inputs_dir / "ProviderRoomAssignmentWeek1.docx")
+    room_map_w2 = load_room_assignments(inputs_dir / "ProviderRoomAssignmentWeek2.docx")
+    week1 = load_appointments(inputs_dir / "AppointmentDataWeek1.csv", "W1")
+    week2 = load_appointments(inputs_dir / "AppointmentDataWeek2.csv", "W2")
 
     week1_res, week1_cg, week1_sched = solve_week_column_generation(week1, room_map_w1, dist, "Week1")
     week2_res, week2_cg, week2_sched = solve_week_column_generation(week2, room_map_w2, dist, "Week2")
@@ -714,15 +783,15 @@ def main() -> None:
         "Week2_results": week2_res,
     }
 
-    week1_cg.to_csv(base / "week1_cg_iterations.csv", index=False)
-    week2_cg.to_csv(base / "week2_cg_iterations.csv", index=False)
-    week1_sched.to_csv(base / "week1_schedule_output.csv", index=False)
-    week2_sched.to_csv(base / "week2_schedule_output.csv", index=False)
-    with open(base / "part3_results_summary.json", "w", encoding="utf-8") as f:
+    week1_cg.to_csv(output_dir / "week1_cg_iterations.csv", index=False)
+    week2_cg.to_csv(output_dir / "week2_cg_iterations.csv", index=False)
+    week1_sched.to_csv(output_dir / "week1_schedule_output.csv", index=False)
+    week2_sched.to_csv(output_dir / "week2_schedule_output.csv", index=False)
+    with open(output_dir / "part3_results_summary.json", "w", encoding="utf-8") as f:
         json.dump(overall, f, indent=2)
 
     print(json.dumps(overall, indent=2))
-    print("\nWrote:")
+    print(f"\nWrote outputs to: {output_dir}")
     print("- week1_cg_iterations.csv")
     print("- week2_cg_iterations.csv")
     print("- week1_schedule_output.csv")

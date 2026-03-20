@@ -1,0 +1,575 @@
+Patient Id,Appt Date,Primary Provider,ApptStatusSingleView,Cancelled Appts,Deleted Appts,No Show Appts ,Appt Time ,Appt Duration,Appt Type 
+Patient 01,11-17-2025,HPW201,Finished,N,N,N,13:00:00,20,
+Patient 02,11-17-2025,HPW201,Finished,N,N,N,13:35:00,10,
+Patient 03,11-17-2025,HPW201,Finished,N,N,N,11:10:00,5,
+Patient 04,11-17-2025,HPW201,Finished,N,N,N,12:05:00,5,Phone visit
+Patient 05,11-17-2025,HPW201,Finished,N,N,N,11:05:00,5,
+Patient 06,11-17-2025,HPW201,Finished,N,N,N,14:30:00,15,Walk In
+Patient 07,11-17-2025,HPW201,Finished,N,N,N,09:45:00,5,
+Patient 08,11-17-2025,HPW201,Finished,N,N,N,10:55:00,10,
+Patient 09,11-17-2025,HPW201,Finished,N,N,N,11:15:00,10,
+Patient 10,11-17-2025,HPW201,Finished,N,N,N,15:45:00,10,Walk In
+Patient 11,11-17-2025,HPW201,Finished,N,N,N,12:10:00,30,Prebooked visit
+Patient 12,11-17-2025,HPW201,Finished,N,N,N,12:20:00,30,Prebooked visit
+Patient 13,11-17-2025,HPW201,Finished,N,N,N,11:40:00,15,
+Patient 14,11-17-2025,HPW201,Finished,N,N,N,11:25:00,15,
+Patient 15,11-17-2025,HPW201,Finished,N,N,N,11:55:00,10,
+Patient 16,11-17-2025,HPW201,Finished,N,N,N,15:35:00,30,CRHIK
+Patient 17,11-17-2025,HPW201,Finished,N,N,N,15:15:00,30,CRHIK
+Patient 18,11-17-2025,HPW201,Finished,N,N,N,15:00:00,30,CRHIK
+Patient 19,11-17-2025,HPW201,Finished,N,N,N,09:50:00,60,CRHI
+Patient 20,11-17-2025,HPW205,,N,Y,N,10:00:00,30,Prebooked visit
+Patient 21,11-17-2025,HPW205,Finished,N,N,N,10:00:00,30,Prebooked visit
+Patient 22,11-17-2025,HPW205,Finished,N,N,N,15:00:00,30,Prebooked visit
+Patient 23,11-17-2025,HPW205,No Show,N,N,Y,09:30:00,30,Prebooked visit
+Patient 24,11-17-2025,HPW205,Finished,N,N,N,10:30:00,30,Prebooked visit
+Patient 25,11-17-2025,HPW205,,N,Y,N,13:00:00,45,Prebooked visit
+Patient 26,11-17-2025,HPW206,Finished,N,N,N,15:50:00,5,
+Patient 27,11-17-2025,HPW206,Finished,N,N,N,16:10:00,5,
+Patient 28,11-17-2025,HPW206,Finished,N,N,N,16:15:00,5,
+Patient 29,11-17-2025,HPW206,Finished,N,N,N,16:20:00,5,
+Patient 30,11-17-2025,HPW206,Finished,N,N,N,13:30:00,5,
+Patient 31,11-17-2025,HPW206,,N,N,N,11:00:00,5,
+Patient 32,11-17-2025,HPW206,,N,Y,N,13:30:00,5,
+Patient 33,11-17-2025,HPW206,Finished,N,N,N,15:55:00,15,Prebooked visit
+Patient 34,11-17-2025,HPW206,Finished,N,N,N,09:55:00,15,Prebooked visit
+Patient 35,11-17-2025,HPW206,No Show,N,N,Y,09:30:00,10,
+Patient 36,11-17-2025,HPW206,Finished,N,N,N,09:40:00,5,
+Patient 37,11-17-2025,HPW206,Finished,N,N,N,09:45:00,10,Prebooked visit
+Patient 38,11-17-2025,HPW206,Finished,N,N,N,10:25:00,5,
+Patient 39,11-17-2025,HPW206,Finished,N,N,N,10:05:00,5,
+Patient 40,11-17-2025,HPW206,Finished,N,N,N,10:50:00,5,
+Patient 41,11-17-2025,HPW206,Finished,N,N,N,10:55:00,5,
+Patient 42,11-17-2025,HPW206,Finished,N,N,N,11:10:00,5,
+Patient 43,11-17-2025,HPW206,Finished,N,N,N,09:50:00,5,
+Patient 44,11-17-2025,HPW206,Finished,N,N,N,14:00:00,30,Nurse visit- PSW form /ob
+Patient 45,11-17-2025,HPW206,,N,Y,N,14:30:00,5,
+Patient 46,11-17-2025,HPW206,Finished,N,N,N,14:30:00,5,
+Patient 47,11-17-2025,HPW206,Finished,N,N,N,15:20:00,5,
+Patient 48,11-17-2025,HPW206,In Room,N,N,N,14:50:00,15,Walk In
+Patient 49,11-17-2025,HPW206,Finished,N,N,N,15:25:00,5,
+Patient 50,11-17-2025,HPW206,Finished,N,N,N,10:40:00,15,Prebooked visit
+Patient 51,11-17-2025,HPW206,Arrived,N,Y,N,11:30:00,15,Nurse visit-Vaccines /ob
+Patient 52,11-17-2025,HPW206,In Room,N,Y,N,11:00:00,15,Nurse visit-Vaccines /ob
+Patient 53,11-17-2025,HPW206,Finished,N,N,N,10:30:00,15,Nurse visit-Vaccines /ob
+Patient 54,11-17-2025,HPW206,Finished,N,N,N,10:45:00,15,Nurse visit-Vaccines /ob
+Patient 55,11-17-2025,HPW206,Finished,N,N,N,11:15:00,15,Nurse visit-Vaccines /ob
+Patient 56,11-17-2025,HPW206,Finished,N,N,N,15:30:00,5,
+Patient 57,11-17-2025,HPW206,,N,Y,N,15:40:00,5,
+Patient 58,11-17-2025,HPW206,Finished,N,N,N,15:40:00,5,
+Patient 59,11-17-2025,HPW206,Finished,N,N,N,15:45:00,5,
+Patient 60,11-17-2025,HPW207,Finished,N,N,N,15:00:00,30,Prebooked
+Patient 61,11-17-2025,HPW207,No Show,N,N,Y,11:00:00,30,Prebooked
+Patient 62,11-17-2025,HPW207,No Show,N,N,Y,10:30:00,30,Prebooked
+Patient 63,11-17-2025,HPW207,Finished,N,N,N,10:00:00,30,Prebooked
+Patient 64,11-17-2025,HPW207,,N,Y,N,11:00:00,30,Phone Call
+Patient 65,11-17-2025,HPW207,Finished,N,N,N,14:30:00,30,Prebooked
+Patient 66,11-17-2025,HPW208,Arrived,N,N,N,11:00:00,30,Prebooked
+Patient 67,11-17-2025,HPW208,Finished,N,N,N,15:20:00,10,Prebooked
+Patient 68,11-17-2025,HPW208,Finished,N,N,N,09:50:00,10,
+Patient 69,11-17-2025,HPW212,Finished,N,N,N,15:00:00,30,Prebooked visit
+Patient 70,11-17-2025,HPW212,,N,N,N,15:35:00,15,Phone Visit/ob
+Patient 71,11-17-2025,HPW212,Finished,N,N,N,14:30:00,30,
+Patient 72,11-17-2025,HPW212,,N,N,N,12:45:00,5,
+Patient 73,11-17-2025,HPW212,,N,N,N,13:00:00,5,Cancelled
+Patient 74,11-17-2025,HPW212,,N,N,N,14:00:00,5,Cancelled
+Patient 75,11-17-2025,HPW212,,N,N,N,15:50:00,5,
+Patient 76,11-17-2025,HPW212,,N,Y,N,14:00:00,30,Prebooked visit
+Patient 77,11-17-2025,HPW212,,N,Y,N,14:30:00,15,Prebooked visit
+Patient 78,11-17-2025,HPW212,,N,Y,N,14:45:00,15,
+Patient 79,11-17-2025,HPW212,,N,Y,N,15:00:00,30,Prebooked visit
+Patient 80,11-17-2025,HPW213,,N,Y,N,11:00:00,30,Prebooked
+Patient 81,11-17-2025,HPW213,Finished,N,N,N,15:30:00,30,Prebooked
+Patient 82,11-17-2025,HPW213,Finished,N,N,N,11:30:00,30,Prebooked
+Patient 83,11-17-2025,HPW213,Finished,N,N,N,09:30:00,30,Prebooked
+Patient 84,11-17-2025,HPW213,Finished,N,N,N,15:00:00,30,Prebooked
+Patient 85,11-17-2025,HPW213,Finished,N,N,N,14:30:00,30,Prebooked
+Patient 86,11-17-2025,HPW213,Finished,N,N,N,10:00:00,30,Prebooked
+Patient 87,11-17-2025,HPW213,,N,Y,N,13:30:00,30,Prebooked
+Patient 88,11-17-2025,HPW214,In Room,N,N,N,10:00:00,30,Prebooked
+Patient 89,11-17-2025,HPW216,Finished,N,N,N,14:30:00,60,Prebooked
+Patient 90,11-17-2025,HPW216,,N,Y,N,11:00:00,30,Prebooked
+Patient 91,11-17-2025,HPW216,Finished,N,N,N,09:30:00,30,Phone Call
+Patient 92,11-17-2025,HPW216,Finished,N,N,N,14:00:00,30,Same Days 
+Patient 93,11-17-2025,HPW216,Finished,N,N,N,11:00:00,30,Prebooked
+Patient 94,11-17-2025,HPW216,No Show,N,N,Y,10:00:00,30,Prebooked
+Patient 95,11-17-2025,HPW216,No Show,N,N,Y,15:30:00,30,Prebooked
+Patient 96,11-17-2025,HPW217,Finished,N,N,N,15:30:00,15,Prebooked Visit/ob
+Patient 97,11-17-2025,HPW217,Finished,N,N,N,14:55:00,15,Same day
+Patient 98,11-17-2025,HPW217,Finished,N,N,N,10:00:00,30,Prebooked visit
+Patient 99,11-17-2025,HPW217,No Show,N,N,Y,09:30:00,30,Prebooked visit
+Patient 100,11-17-2025,HPW217,,N,N,N,10:45:00,5,Cancelled
+Patient 101,11-17-2025,HPW217,Finished,N,N,N,10:40:00,15,Same day
+Patient 102,11-17-2025,HPW217,Finished,N,N,N,15:15:00,15,Same day
+Patient 103,11-17-2025,HPW217,Finished,N,N,N,14:00:00,15,Same day
+Patient 104,11-17-2025,HPW217,Finished,N,N,N,14:50:00,15,Same day
+Patient 105,11-17-2025,HPW217,Finished,N,N,N,15:20:00,15,Same day
+Patient 106,11-17-2025,HPW217,No Show,N,N,Y,09:45:00,15,Prebooked visit
+Patient 107,11-17-2025,HPW217,Finished,N,N,N,15:35:00,15,Same day
+Patient 108,11-17-2025,HPW217,Finished,N,N,N,13:30:00,15,Same day
+Patient 109,11-17-2025,HPW217,Finished,N,N,N,10:30:00,30,Prebooked visit
+Patient 110,11-17-2025,HPW217,Finished,N,N,N,15:10:00,15,Same day
+Patient 111,11-17-2025,HPW217,Finished,N,N,N,15:00:00,15,Phone Visit/ob
+Patient 112,11-17-2025,HPW217,Finished,N,N,N,14:05:00,15,Same day
+Patient 113,11-17-2025,HPW217,Finished,N,N,N,10:50:00,15,Same day
+Patient 114,11-17-2025,HPW217,No Show,N,N,Y,11:00:00,30,Prebooked visit
+Patient 115,11-17-2025,HPW217,Finished,N,N,N,16:10:00,15,Same day
+Patient 116,11-17-2025,HPW217,Finished,N,N,N,10:25:00,15,Same day
+Patient 117,11-17-2025,HPW217,Finished,N,N,N,11:40:00,20,Prebooked Visit/ob
+Patient 118,11-17-2025,HPW217,,N,Y,N,11:00:00,30,Prebooked visit
+Patient 119,11-17-2025,HPW217,,N,Y,N,13:00:00,15,Walk In
+Patient 120,11-17-2025,HPW217,Finished,N,N,N,16:05:00,15,Same day
+Patient 121,11-17-2025,HPW217,Finished,N,N,N,15:45:00,15,Admin Time
+Patient 122,11-17-2025,HPW217,Finished,N,N,N,10:05:00,15,Same day
+Patient 123,11-17-2025,HPW217,,N,Y,N,09:30:00,5,Cancelled
+Patient 124,11-17-2025,HPW217,Finished,N,N,N,15:25:00,15,Same day
+Patient 125,11-17-2025,HPW217,Finished,N,N,N,13:35:00,15,Same day
+Patient 126,11-17-2025,HPW217,Finished,N,N,N,10:15:00,15,Same day
+Patient 127,11-17-2025,HPW217,Finished,N,N,N,10:10:00,15,Prebooked Visit/ob
+Patient 128,11-17-2025,HPW217,Finished,N,N,N,12:50:00,15,Same day
+Patient 129,11-17-2025,HPW217,,N,N,N,12:40:00,15,Same day
+Patient 130,11-17-2025,HPW217,Finished,N,N,N,13:05:00,15,Same day
+Patient 131,11-17-2025,HPW217,Finished,N,N,N,12:45:00,15,Same day
+Patient 132,11-17-2025,HPW217,Finished,N,N,N,13:10:00,15,Same day
+Patient 133,11-17-2025,HPW217,Finished,N,N,N,15:50:00,15,Same day
+Patient 134,11-17-2025,HPW217,Finished,N,N,N,14:15:00,15,Same day
+Patient 135,11-17-2025,HPW217,,N,Y,N,13:15:00,15,Prebooked Visit/ob
+Patient 136,11-17-2025,HPW218,,N,N,N,09:30:00,5,Cancelled
+Patient 137,11-17-2025,HPW218,Finished,N,N,N,14:45:00,15,Walk In
+Patient 138,11-17-2025,HPW218,No Show,N,N,Y,14:15:00,15,Prebooked visit
+Patient 139,11-17-2025,HPW218,No Show,N,N,Y,11:00:00,15,Immunization
+Patient 140,11-17-2025,HPW218,Finished,N,N,N,15:40:00,15,Prebooked visit
+Patient 141,11-17-2025,HPW218,Finished,N,N,N,09:35:00,15,Prebooked visit
+Patient 142,11-17-2025,HPW218,No Show,N,N,Y,11:30:00,15,Prebooked visit
+Patient 143,11-17-2025,HPW218,Finished,N,N,N,13:00:00,15,CRHI
+Patient 144,11-17-2025,HPW218,Finished,N,N,N,13:15:00,15,CRHI
+Patient 145,11-17-2025,HPW218,Finished,N,N,N,13:45:00,15,CRHI
+Patient 146,11-17-2025,HPW218,Finished,N,N,N,13:30:00,15,CRHI
+Patient 147,11-17-2025,HPW218,Finished,N,N,N,15:05:00,15,Prebooked Visit/ob
+Patient 148,11-17-2025,HPW218,No Show,N,N,Y,10:50:00,15,Prebooked Visit/ob
+Patient 149,11-17-2025,HPW218,,N,N,N,15:00:00,5,Cancelled
+Patient 150,11-17-2025,HPW218,Finished,N,N,N,09:55:00,15,
+Patient 151,11-17-2025,HPW218,Finished,N,N,N,10:25:00,15,
+Patient 152,11-17-2025,HPW218,Finished,N,N,N,09:05:00,15,
+Patient 153,11-17-2025,HPW221,,N,Y,N,12:10:00,5,
+Patient 154,11-17-2025,HPW221,Finished,N,N,N,10:40:00,15,Walk In
+Patient 155,11-17-2025,HPW221,,N,Y,N,13:15:00,120,CRHI
+Patient 156,11-17-2025,HPW222,Finished,N,N,N,10:00:00,30,Prebooked
+Patient 157,11-17-2025,HPW222,Finished,N,N,N,14:30:00,40,Same Days 
+Patient 158,11-17-2025,HPW222,Finished,N,N,N,09:30:00,30,Prebooked
+Patient 159,11-17-2025,HPW222,Finished,N,N,N,11:00:00,30,Prebooked
+Patient 160,11-17-2025,HPW222,Finished,N,N,N,13:30:00,30,Prebooked
+Patient 161,11-17-2025,HPW222,,N,N,N,15:10:00,10,Phone Call
+Patient 162,11-17-2025,HPW223,Cancelled,Y,Y,N,15:00:00,30,Prebooked Visit/ob
+Patient 163,11-17-2025,HPW223,,N,N,N,15:40:00,5,
+Patient 164,11-18-2025,HPW201,Finished,N,N,N,10:40:00,5,
+Patient 165,11-18-2025,HPW201,Finished,N,N,N,10:45:00,5,
+Patient 166,11-18-2025,HPW201,Finished,N,N,N,10:55:00,5,
+Patient 167,11-18-2025,HPW201,,N,Y,N,11:05:00,5,
+Patient 168,11-18-2025,HPW201,Finished,N,N,N,11:05:00,5,
+Patient 169,11-18-2025,HPW201,Finished,N,N,N,11:10:00,5,
+Patient 170,11-18-2025,HPW201,Finished,N,N,N,10:30:00,5,Phone visit
+Patient 171,11-18-2025,HPW201,Finished,N,N,N,11:20:00,5,
+Patient 172,11-18-2025,HPW201,Finished,N,N,N,10:25:00,5,
+Patient 173,11-18-2025,HPW201,,N,Y,N,15:25:00,5,
+Patient 174,11-18-2025,HPW201,Finished,N,N,N,14:00:00,15,Prebooked visit
+Patient 175,11-18-2025,HPW201,Finished,N,N,N,15:05:00,5,
+Patient 176,11-18-2025,HPW201,Arrived,N,Y,N,14:00:00,15,Prebooked visit
+Patient 177,11-18-2025,HPW201,Finished,N,N,N,15:10:00,5,
+Patient 178,11-18-2025,HPW201,Finished,N,N,N,15:15:00,5,
+Patient 179,11-18-2025,HPW201,Finished,N,N,N,14:45:00,20,
+Patient 180,11-18-2025,HPW201,Finished,N,N,N,15:20:00,5,
+Patient 181,11-18-2025,HPW201,,N,Y,N,10:50:00,5,
+Patient 182,11-18-2025,HPW201,Finished,N,N,N,14:40:00,5,
+Patient 183,11-18-2025,HPW201,Finished,N,N,N,09:40:00,30,Prebooked Visit/ob
+Patient 184,11-18-2025,HPW201,Finished,N,N,N,09:55:00,30,
+Patient 185,11-18-2025,HPW201,Finished,N,N,N,11:30:00,30,Prebooked Visit/ob
+Patient 186,11-18-2025,HPW201,Finished,N,N,N,11:45:00,30,CRHI
+Patient 187,11-18-2025,HPW202,,N,Y,N,15:00:00,60,
+Patient 188,11-18-2025,HPW202,Finished,N,N,N,09:00:00,60,
+Patient 189,11-18-2025,HPW202,Finished,N,N,N,13:00:00,60,
+Patient 190,11-18-2025,HPW202,No Show,N,N,Y,10:00:00,10,Cancelled 
+Patient 191,11-18-2025,HPW202,Finished,N,N,N,14:00:00,60,Respiratory Therapist
+Patient 192,11-18-2025,HPW202,,N,N,N,11:00:00,10,Cancelled 
+Patient 193,11-18-2025,HPW202,,N,Y,N,14:00:00,60,
+Patient 194,11-18-2025,HPW202,Finished,N,N,N,11:00:00,60,Respiratory Therapist
+Patient 195,11-18-2025,HPW202,Finished,N,N,N,15:00:00,60,Respiratory Therapist
+Patient 196,11-18-2025,HPW203,Finished,N,N,N,11:00:00,15,
+Patient 197,11-18-2025,HPW203,Finished,N,N,N,11:20:00,5,
+Patient 198,11-18-2025,HPW203,Finished,N,N,N,10:55:00,5,
+Patient 199,11-18-2025,HPW203,Finished,N,N,N,11:25:00,5,Rx Refill 
+Patient 200,11-18-2025,HPW203,Finished,N,N,N,10:30:00,5,
+Patient 201,11-18-2025,HPW203,Finished,N,N,N,10:40:00,15,Chronic Disease
+Patient 202,11-18-2025,HPW203,Finished,N,N,N,09:55:00,15,Walk In
+Patient 203,11-18-2025,HPW203,Finished,N,N,N,09:45:00,5,
+Patient 204,11-18-2025,HPW203,Finished,N,N,N,11:15:00,5,
+Patient 205,11-18-2025,HPW203,Finished,N,N,N,09:50:00,5,Phone visit
+Patient 206,11-18-2025,HPW203,Finished,N,N,N,10:10:00,15,
+Patient 207,11-18-2025,HPW204,,N,N,N,11:10:00,5,Cancelled
+Patient 208,11-18-2025,HPW204,Finished,N,N,N,15:30:00,45,Antenatal Visit
+Patient 209,11-18-2025,HPW204,Finished,N,N,N,14:00:00,60,Postpartum Visit
+Patient 210,11-18-2025,HPW204,Finished,N,N,N,10:30:00,30,Postpartum Visit
+Patient 211,11-18-2025,HPW204,Cancelled,Y,Y,N,10:30:00,60,Postpartum Visit
+Patient 212,11-18-2025,HPW204,,N,N,N,15:00:00,5,Cancelled
+Patient 213,11-18-2025,HPW204,Finished,N,N,N,10:00:00,30,Antenatal Visit
+Patient 214,11-18-2025,HPW204,Finished,N,N,N,09:30:00,30,Postpartum Visit
+Patient 215,11-18-2025,HPW204,,N,Y,N,13:00:00,60,Antenatal Visit
+Patient 216,11-18-2025,HPW204,Finished,N,N,N,16:15:00,30,Antenatal Visit
+Patient 217,11-18-2025,HPW204,,N,N,N,11:00:00,5,Cancelled
+Patient 218,11-18-2025,HPW204,Finished,N,N,N,10:35:00,15,Well Baby
+Patient 219,11-18-2025,HPW204,Finished,N,N,N,14:15:00,30,Well Baby
+Patient 220,11-18-2025,HPW204,Finished,N,N,N,11:35:00,15,Well Baby
+Patient 221,11-18-2025,HPW205,,N,N,N,15:15:00,5,
+Patient 222,11-18-2025,HPW205,,N,Y,N,13:30:00,60,Prebooked visit
+Patient 223,11-18-2025,HPW205,,N,Y,N,09:20:00,5,
+Patient 224,11-18-2025,HPW205,Finished,N,N,N,14:00:00,30,Prebooked visit
+Patient 225,11-18-2025,HPW205,Finished,N,N,N,09:35:00,45,CRHI
+Patient 226,11-18-2025,HPW205,Finished,N,N,N,10:50:00,30,CRHI
+Patient 227,11-18-2025,HPW205,Arrived,N,Y,N,10:20:00,30,CRHI
+Patient 228,11-18-2025,HPW206,,N,Y,N,10:45:00,15,Nurse visit- Flu shot /ob
+Patient 229,11-18-2025,HPW206,Finished,N,N,N,15:25:00,15,
+Patient 230,11-18-2025,HPW206,,N,Y,N,11:15:00,15,Nurse visit- Flu shot /ob
+Patient 231,11-18-2025,HPW206,Finished,N,N,N,10:15:00,15,Nurse visit- Flu shot /ob
+Patient 232,11-18-2025,HPW206,Finished,N,N,N,11:00:00,15,Nurse visit- Flu shot /ob
+Patient 233,11-18-2025,HPW206,,N,Y,N,14:35:00,15,Same day
+Patient 234,11-18-2025,HPW206,Finished,N,N,N,09:35:00,5,Same day
+Patient 235,11-18-2025,HPW206,,N,Y,N,14:15:00,15,Prebooked visit
+Patient 236,11-18-2025,HPW206,,N,Y,N,11:30:00,15,Nurse visit- Flu shot /ob
+Patient 237,11-18-2025,HPW206,Finished,N,N,N,10:30:00,15,Nurse visit- Flu shot /ob
+Patient 238,11-18-2025,HPW206,Finished,N,N,N,11:20:00,15,Prebooked visit
+Patient 239,11-18-2025,HPW206,Finished,N,N,N,09:45:00,15,Well Baby
+Patient 240,11-18-2025,HPW206,Finished,N,N,N,10:00:00,60,Prebooked visit
+Patient 241,11-18-2025,HPW206,Finished,N,N,N,11:35:00,15,Prebooked visit
+Patient 242,11-18-2025,HPW207,,N,N,N,10:30:00,10,Cancelled 
+Patient 243,11-18-2025,HPW207,Finished,N,N,N,11:00:00,30,Phone Call
+Patient 244,11-18-2025,HPW207,Finished,N,N,N,14:30:00,30,Prebooked
+Patient 245,11-18-2025,HPW207,Finished,N,N,N,15:00:00,30,Prebooked
+Patient 246,11-18-2025,HPW207,Finished,N,N,N,10:30:00,30,Phone Call
+Patient 247,11-18-2025,HPW207,Finished,N,N,N,15:30:00,30,Phone Call
+Patient 248,11-18-2025,HPW208,Finished,N,N,N,14:10:00,10,
+Patient 249,11-18-2025,HPW210,Ready,N,N,N,13:00:00,30,Prebooked Visit/ob
+Patient 250,11-18-2025,HPW210,Ready,N,N,N,10:00:00,30,Prebooked visit
+Patient 251,11-18-2025,HPW210,No Show,N,N,Y,11:30:00,30,Prebooked Visit/ob
+Patient 252,11-18-2025,HPW210,,N,Y,N,11:30:00,30,Prebooked Visit/ob
+Patient 253,11-18-2025,HPW210,,N,N,N,09:45:00,5,
+Patient 254,11-18-2025,HPW210,Ready,N,N,N,16:30:00,30,Prebooked Visit/ob
+Patient 255,11-18-2025,HPW210,,N,Y,N,15:30:00,5,Phone visit
+Patient 256,11-18-2025,HPW210,Ready,N,N,N,16:00:00,30,Same day
+Patient 257,11-18-2025,HPW210,,N,Y,N,16:00:00,30,Prebooked Visit/ob
+Patient 258,11-18-2025,HPW210,Ready,N,N,N,15:00:00,30,Same day
+Patient 259,11-18-2025,HPW210,Ready,N,N,N,11:00:00,30,Prebooked Visit/ob
+Patient 260,11-18-2025,HPW211,Finished,N,N,N,15:00:00,20,Prebooked
+Patient 261,11-18-2025,HPW211,,N,Y,N,10:30:00,30,Prebooked
+Patient 262,11-18-2025,HPW212,No Show,N,N,Y,10:30:00,30,
+Patient 263,11-18-2025,HPW212,Arrived,N,N,N,11:00:00,30,Prebooked visit
+Patient 264,11-18-2025,HPW212,,N,Y,N,13:10:00,30,Phone Visit/ob
+Patient 265,11-18-2025,HPW212,,N,N,N,15:25:00,5,
+Patient 266,11-18-2025,HPW213,Ready,N,N,N,13:30:00,60,Prebooked
+Patient 267,11-18-2025,HPW213,Finished,N,N,N,13:20:00,10,
+Patient 268,11-18-2025,HPW213,Finished,N,N,N,14:40:00,10,
+Patient 269,11-18-2025,HPW214,Finished,N,N,N,15:00:00,30,Prebooked
+Patient 270,11-18-2025,HPW214,No Show,N,N,Y,14:00:00,30,Prebooked
+Patient 271,11-18-2025,HPW214,Finished,N,N,N,10:30:00,30,Prebooked
+Patient 272,11-18-2025,HPW214,Finished,N,N,N,09:30:00,30,Prebooked
+Patient 273,11-18-2025,HPW216,Ready,N,N,N,15:00:00,30,Prebooked
+Patient 274,11-18-2025,HPW216,Ready,N,N,N,14:00:00,30,Same Days 
+Patient 275,11-18-2025,HPW216,No Show,N,N,Y,11:00:00,10,Cancelled 
+Patient 276,11-18-2025,HPW216,No Show,N,N,Y,11:30:00,10,Cancelled 
+Patient 277,11-18-2025,HPW216,,N,Y,N,15:00:00,10,
+Patient 278,11-18-2025,HPW216,Ready,N,N,N,14:30:00,30,Prebooked
+Patient 279,11-18-2025,HPW217,Finished,N,N,N,09:15:00,5,Admin Time
+Patient 280,11-18-2025,HPW217,Finished,N,N,N,11:50:00,15,Same day
+Patient 281,11-18-2025,HPW217,Finished,N,N,N,13:55:00,15,Same day
+Patient 282,11-18-2025,HPW217,Finished,N,N,N,14:30:00,15,Same day
+Patient 283,11-18-2025,HPW217,Finished,N,N,N,13:00:00,15,Same day
+Patient 284,11-18-2025,HPW217,Finished,N,N,N,15:30:00,15,Prebooked Visit/ob
+Patient 285,11-18-2025,HPW217,Finished,N,N,N,14:15:00,15,Same day
+Patient 286,11-18-2025,HPW217,Finished,N,N,N,15:35:00,15,Same day
+Patient 287,11-18-2025,HPW217,Finished,N,N,N,09:20:00,5,Admin Time
+Patient 288,11-18-2025,HPW217,Finished,N,N,N,14:00:00,15,Same day
+Patient 289,11-18-2025,HPW217,,N,Y,N,11:45:00,15,Prebooked visit
+Patient 290,11-18-2025,HPW217,Finished,N,N,N,13:30:00,15,Same day
+Patient 291,11-18-2025,HPW217,Finished,N,N,N,15:00:00,15,Phone visit
+Patient 292,11-18-2025,HPW217,Finished,N,N,N,11:45:00,15,Prebooked visit
+Patient 293,11-18-2025,HPW217,Finished,N,N,N,13:15:00,15,Same day
+Patient 294,11-18-2025,HPW217,Finished,N,N,N,13:20:00,15,Same day
+Patient 295,11-18-2025,HPW217,Finished,N,N,N,15:15:00,15,Prebooked Visit/ob
+Patient 296,11-18-2025,HPW217,Finished,N,N,N,14:05:00,15,Same day
+Patient 297,11-18-2025,HPW217,Finished,N,N,N,11:30:00,15,Same day
+Patient 298,11-18-2025,HPW218,No Show,N,N,Y,10:15:00,15,Prebooked Visit/ob
+Patient 299,11-18-2025,HPW218,Finished,N,N,N,11:00:00,15,Prebooked Visit/ob
+Patient 300,11-18-2025,HPW218,Finished,N,N,N,09:30:00,15,Prebooked visit
+Patient 301,11-18-2025,HPW218,Finished,N,N,N,09:45:00,15,Prebooked visit
+Patient 302,11-18-2025,HPW218,Confirmed,N,Y,N,10:00:00,15,Prebooked visit
+Patient 303,11-18-2025,HPW218,Finished,N,N,N,10:00:00,15,
+Patient 304,11-18-2025,HPW219,In Room,N,N,N,15:00:00,30,Prebooked visit
+Patient 305,11-18-2025,HPW220,Finished,N,N,N,10:30:00,10,Prebooked
+Patient 306,11-18-2025,HPW221,,N,N,N,14:15:00,5,Cancelled
+Patient 307,11-18-2025,HPW221,Finished,N,N,N,14:40:00,15,
+Patient 308,11-18-2025,HPW221,,N,Y,N,13:45:00,30,Prebooked Visit/ob
+Patient 309,11-18-2025,HPW221,,N,N,N,13:15:00,5,Cancelled
+Patient 310,11-18-2025,HPW222,Finished,N,N,N,14:00:00,60,Prebooked
+Patient 311,11-18-2025,HPW222,Finished,N,N,N,11:00:00,30,Prebooked
+Patient 312,11-18-2025,HPW222,Finished,N,N,N,10:00:00,30,Prebooked
+Patient 313,11-18-2025,HPW222,Finished,N,N,N,15:30:00,30,Same Days 
+Patient 314,11-18-2025,HPW222,Finished,N,N,N,15:50:00,10,
+Patient 315,11-18-2025,HPW222,,N,Y,N,09:30:00,30,Prebooked
+Patient 316,11-18-2025,HPW222,Finished,N,N,N,15:00:00,30,Prebooked
+Patient 317,11-18-2025,HPW222,Finished,N,N,N,09:30:00,30,Prebooked
+Patient 318,11-18-2025,HPW223,,N,Y,N,12:50:00,5,
+Patient 319,11-18-2025,HPW223,Finished,N,N,N,10:20:00,5,
+Patient 320,11-18-2025,HPW223,,N,N,N,13:30:00,5,
+Patient 321,11-18-2025,HPW223,,N,N,N,13:20:00,5,
+Patient 322,11-18-2025,HPW223,,N,N,N,13:25:00,5,
+Patient 323,11-19-2025,HPW201,Finished,N,N,N,15:15:00,15,
+Patient 324,11-19-2025,HPW201,Finished,N,N,N,11:55:00,15,
+Patient 325,11-19-2025,HPW201,Finished,N,N,N,14:35:00,5,
+Patient 326,11-19-2025,HPW201,Finished,N,N,N,09:45:00,5,Admin Time
+Patient 327,11-19-2025,HPW201,Finished,N,N,N,10:50:00,5,
+Patient 328,11-19-2025,HPW201,Finished,N,N,N,09:50:00,15,
+Patient 329,11-19-2025,HPW201,Finished,N,N,N,13:30:00,15,
+Patient 330,11-19-2025,HPW201,Finished,N,N,N,14:00:00,15,Prebooked visit
+Patient 331,11-19-2025,HPW201,Finished,N,N,N,13:00:00,15,
+Patient 332,11-19-2025,HPW201,In Room,N,Y,N,09:50:00,15,Same day
+Patient 333,11-19-2025,HPW201,Finished,N,N,N,10:55:00,15,
+Patient 334,11-19-2025,HPW201,Finished,N,N,N,15:00:00,15,
+Patient 335,11-19-2025,HPW201,Finished,N,N,N,09:30:00,5,Admin Time
+Patient 336,11-19-2025,HPW201,Finished,N,N,N,09:40:00,5,Admin Time
+Patient 337,11-19-2025,HPW201,Finished,N,N,N,10:05:00,15,Same day
+Patient 338,11-19-2025,HPW201,Finished,N,N,N,14:40:00,5,
+Patient 339,11-19-2025,HPW201,Finished,N,N,N,13:45:00,15,
+Patient 340,11-19-2025,HPW201,Finished,N,N,N,10:35:00,15,
+Patient 341,11-19-2025,HPW203,Finished,N,N,N,13:30:00,60,Prebooked visit
+Patient 342,11-19-2025,HPW203,Finished,N,N,N,13:00:00,30,Prebooked visit
+Patient 343,11-19-2025,HPW203,,N,N,N,11:05:00,60,
+Patient 344,11-19-2025,HPW203,,N,N,N,11:00:00,5,Cancelled
+Patient 345,11-19-2025,HPW203,Finished,N,N,N,10:00:00,30,Prebooked visit
+Patient 346,11-19-2025,HPW203,Finished,N,N,N,09:30:00,30,Prebooked visit
+Patient 347,11-19-2025,HPW203,,N,Y,N,11:30:00,30,Prebooked visit
+Patient 348,11-19-2025,HPW204,Finished,N,N,N,14:00:00,30,Postpartum Visit
+Patient 349,11-19-2025,HPW204,Finished,N,N,N,15:30:00,30,Antenatal Visit
+Patient 350,11-19-2025,HPW204,Finished,N,N,N,12:25:00,45,Postpartum Visit
+Patient 351,11-19-2025,HPW204,Finished,N,N,N,14:35:00,45,Prebooked visit
+Patient 352,11-19-2025,HPW204,Finished,N,N,N,10:50:00,45,Postpartum Visit
+Patient 353,11-19-2025,HPW204,No Show,N,N,Y,16:30:00,45,Antenatal Visit
+Patient 354,11-19-2025,HPW204,,N,Y,N,14:35:00,45,Well Baby
+Patient 355,11-19-2025,HPW204,No Show,N,N,Y,16:35:00,30,Well Baby
+Patient 356,11-19-2025,HPW204,,N,Y,N,11:30:00,30,Well Baby
+Patient 357,11-19-2025,HPW204,No Show,N,N,Y,13:00:00,60,Antenatal Visit
+Patient 358,11-19-2025,HPW204,Finished,N,N,N,12:30:00,30,Well Baby
+Patient 359,11-19-2025,HPW205,No Show,N,N,Y,14:30:00,30,Prebooked visit
+Patient 360,11-19-2025,HPW205,No Show,N,N,Y,09:30:00,30,Prebooked visit
+Patient 361,11-19-2025,HPW205,Finished,N,N,N,13:30:00,60,Prebooked visit
+Patient 362,11-19-2025,HPW205,No Show,N,N,Y,10:00:00,60,Prebooked visit
+Patient 363,11-19-2025,HPW205,Finished,N,N,N,09:10:00,10,Phone visit
+Patient 364,11-19-2025,HPW206,Finished,N,N,N,10:30:00,5,
+Patient 365,11-19-2025,HPW206,Finished,N,N,N,09:55:00,5,
+Patient 366,11-19-2025,HPW206,Finished,N,N,N,10:35:00,5,
+Patient 367,11-19-2025,HPW206,Finished,N,N,N,14:10:00,5,
+Patient 368,11-19-2025,HPW206,Finished,N,N,N,14:15:00,5,
+Patient 369,11-19-2025,HPW206,Finished,N,N,N,14:20:00,5,
+Patient 370,11-19-2025,HPW206,Finished,N,N,N,15:05:00,5,
+Patient 371,11-19-2025,HPW206,Finished,N,N,N,15:10:00,5,
+Patient 372,11-19-2025,HPW206,Finished,N,N,N,11:15:00,15,Prebooked visit
+Patient 373,11-19-2025,HPW206,Finished,N,N,N,16:15:00,15,Prebooked visit
+Patient 374,11-19-2025,HPW206,Finished,N,N,N,15:50:00,5,
+Patient 375,11-19-2025,HPW206,,N,Y,N,15:45:00,30,Prebooked Visit/ob
+Patient 376,11-19-2025,HPW206,Finished,N,N,N,11:00:00,15,Prebooked visit
+Patient 377,11-19-2025,HPW206,Finished,N,N,N,15:55:00,5,
+Patient 378,11-19-2025,HPW206,,N,N,N,15:30:00,5,Cancelled
+Patient 379,11-19-2025,HPW206,Finished,N,N,N,14:00:00,10,Antenatal Visit
+Patient 380,11-19-2025,HPW206,Finished,N,N,N,13:00:00,15,Well Baby
+Patient 381,11-19-2025,HPW206,Finished,N,N,N,13:45:00,15,Prebooked visit
+Patient 382,11-19-2025,HPW206,Finished,N,N,N,13:30:00,15,CRHI
+Patient 383,11-19-2025,HPW207,Finished,N,N,N,10:30:00,40,Prebooked
+Patient 384,11-19-2025,HPW207,Finished,N,N,N,10:00:00,30,Prebooked
+Patient 385,11-19-2025,HPW208,,N,Y,N,15:30:00,30,Prebooked
+Patient 386,11-19-2025,HPW208,Arrived,N,N,N,10:40:00,20,Prebooked
+Patient 387,11-19-2025,HPW208,Arrived,N,N,N,14:00:00,30,Prebooked
+Patient 388,11-19-2025,HPW208,No Show,N,N,Y,11:00:00,30,Prebooked
+Patient 389,11-19-2025,HPW208,Confirmed,N,Y,N,14:00:00,30,Prebooked
+Patient 390,11-19-2025,HPW208,Arrived,N,N,N,10:00:00,30,Prebooked
+Patient 391,11-19-2025,HPW208,,N,Y,N,16:20:00,30,Prebooked
+Patient 392,11-19-2025,HPW209,Finished,N,N,N,14:30:00,30,Prebooked
+Patient 393,11-19-2025,HPW209,Arrived,N,N,N,09:30:00,30,Prebooked
+Patient 394,11-19-2025,HPW209,Finished,N,N,N,08:30:00,30,Phone Call
+Patient 395,11-19-2025,HPW209,Finished,N,N,N,15:00:00,30,Prebooked
+Patient 396,11-19-2025,HPW209,Finished,N,N,N,10:00:00,30,Prebooked
+Patient 397,11-19-2025,HPW209,Finished,N,N,N,09:00:00,30,Prebooked
+Patient 398,11-19-2025,HPW209,,N,N,N,10:10:00,10,Cancelled 
+Patient 399,11-19-2025,HPW209,Finished,N,N,N,11:30:00,30,Prebooked
+Patient 400,11-19-2025,HPW209,Finished,N,N,N,15:30:00,30,Prebooked
+Patient 401,11-19-2025,HPW210,,N,N,N,09:30:00,30,Prebooked Visit/ob
+Patient 402,11-19-2025,HPW210,No Show,N,N,Y,14:00:00,30,Prebooked visit
+Patient 403,11-19-2025,HPW210,In Room,N,N,N,15:00:00,30,
+Patient 404,11-19-2025,HPW210,Ready,N,N,N,14:30:00,30,
+Patient 405,11-19-2025,HPW210,Ready,N,N,N,16:00:00,30,Same day
+Patient 406,11-19-2025,HPW210,Ready,N,N,N,15:30:00,30,Prebooked visit
+Patient 407,11-19-2025,HPW210,Ready,N,N,N,13:30:00,30,Prebooked Visit/ob
+Patient 408,11-19-2025,HPW211,Cancelled,Y,Y,N,13:20:00,20,Prebooked
+Patient 409,11-19-2025,HPW211,Finished,N,N,N,15:30:00,10,Prebooked
+Patient 410,11-19-2025,HPW211,Finished,N,N,N,10:00:00,30,Prebooked
+Patient 411,11-19-2025,HPW211,Finished,N,N,N,13:30:00,30,Prebooked
+Patient 412,11-19-2025,HPW214,,N,N,N,16:00:00,10,Cancelled 
+Patient 413,11-19-2025,HPW216,No Show,N,N,Y,10:00:00,30,Prebooked
+Patient 414,11-19-2025,HPW216,Finished,N,N,N,11:00:00,30,Prebooked
+Patient 415,11-19-2025,HPW216,,N,Y,N,09:30:00,30,Prebooked
+Patient 416,11-19-2025,HPW216,,N,N,N,14:00:00,10,Cancelled 
+Patient 417,11-19-2025,HPW216,,N,Y,N,10:30:00,30,Prebooked
+Patient 418,11-19-2025,HPW217,Finished,N,N,N,13:15:00,15,Same day
+Patient 419,11-19-2025,HPW217,Finished,N,N,N,13:00:00,15,Same day
+Patient 420,11-19-2025,HPW217,Finished,N,N,N,13:05:00,15,Same day
+Patient 421,11-19-2025,HPW218,Finished,N,N,N,13:15:00,15,Nurse visit
+Patient 422,11-19-2025,HPW218,Finished,N,N,N,13:00:00,15,Nurse visit
+Patient 423,11-19-2025,HPW218,Finished,N,N,N,14:45:00,5,
+Patient 424,11-19-2025,HPW218,No Show,N,N,Y,13:45:00,15,Nurse visit
+Patient 425,11-19-2025,HPW218,Finished,N,N,N,13:30:00,15,Nurse visit
+Patient 426,11-19-2025,HPW218,Finished,N,N,N,10:40:00,5,
+Patient 427,11-19-2025,HPW221,,N,Y,N,09:10:00,5,
+Patient 428,11-19-2025,HPW221,Finished,N,N,N,10:00:00,10,Phone visit
+Patient 429,11-19-2025,HPW221,Finished,N,N,N,15:30:00,30,
+Patient 430,11-19-2025,HPW221,,N,Y,N,10:30:00,30,Prebooked visit
+Patient 431,11-19-2025,HPW222,Finished,N,N,N,16:00:00,10,Phone Call
+Patient 432,11-19-2025,HPW222,Finished,N,N,N,10:30:00,30,Prebooked
+Patient 433,11-19-2025,HPW222,Finished,N,N,N,14:30:00,30,Same Days 
+Patient 434,11-19-2025,HPW222,Finished,N,N,N,15:00:00,30,Phone Call
+Patient 435,11-19-2025,HPW222,Finished,N,N,N,13:00:00,30,Prebooked
+Patient 436,11-19-2025,HPW222,Finished,N,N,N,09:50:00,10,
+Patient 437,11-19-2025,HPW222,Finished,N,N,N,14:00:00,30,Prebooked
+Patient 438,11-19-2025,HPW222,Finished,N,N,N,11:00:00,10,
+Patient 439,11-19-2025,HPW222,Finished,N,N,N,15:30:00,30,Prebooked
+Patient 440,11-20-2025,HPW205,,N,N,N,10:00:00,5,Cancelled
+Patient 441,11-20-2025,HPW205,Finished,N,N,N,10:30:00,30,Well Baby
+Patient 442,11-20-2025,HPW206,Finished,N,N,N,10:00:00,15,Prebooked Visit/ob
+Patient 443,11-20-2025,HPW206,Finished,N,N,N,11:00:00,15,Prebooked visit
+Patient 444,11-20-2025,HPW206,Finished,N,N,N,10:05:00,5,
+Patient 445,11-20-2025,HPW206,,N,Y,N,11:30:00,30,Prebooked visit
+Patient 446,11-20-2025,HPW206,Finished,N,N,N,09:30:00,10,Primary Care Pediatrics /ob
+Patient 447,11-20-2025,HPW206,Finished,N,N,N,10:10:00,15,CRHI
+Patient 448,11-20-2025,HPW207,Finished,N,N,N,09:30:00,30,Prebooked
+Patient 449,11-20-2025,HPW207,Finished,N,N,N,10:00:00,30,Phone Call
+Patient 450,11-20-2025,HPW208,Arrived,N,N,N,11:30:00,30,Prebooked
+Patient 451,11-20-2025,HPW208,Arrived,N,N,N,11:00:00,20,Prebooked
+Patient 452,11-20-2025,HPW208,Arrived,N,N,N,11:10:00,20,Prebooked
+Patient 453,11-20-2025,HPW209,Finished,N,N,N,10:30:00,30,Prebooked
+Patient 454,11-20-2025,HPW209,Finished,N,N,N,08:30:00,30,Phone Call
+Patient 455,11-20-2025,HPW209,Finished,N,N,N,09:30:00,30,Prebooked
+Patient 456,11-20-2025,HPW209,,N,N,N,09:00:00,10,Cancelled 
+Patient 457,11-20-2025,HPW209,Finished,N,N,N,11:00:00,30,Prebooked
+Patient 458,11-20-2025,HPW212,,N,N,N,11:00:00,30,Same day
+Patient 459,11-20-2025,HPW212,,N,N,N,11:30:00,30,Phone visit
+Patient 460,11-20-2025,HPW214,Finished,N,N,N,11:00:00,20,Prebooked
+Patient 461,11-20-2025,HPW214,No Show,N,N,Y,11:20:00,20,Prebooked
+Patient 462,11-20-2025,HPW216,Finished,N,N,N,11:00:00,30,Phone Call
+Patient 463,11-20-2025,HPW216,Finished,N,N,N,10:30:00,30,Prebooked
+Patient 464,11-20-2025,HPW216,Finished,N,N,N,10:00:00,30,Prebooked
+Patient 465,11-20-2025,HPW217,,N,Y,N,10:20:00,15,Prebooked visit
+Patient 466,11-20-2025,HPW217,Finished,N,N,N,11:30:00,30,Prebooked visit
+Patient 467,11-20-2025,HPW217,Finished,N,N,N,10:45:00,15,Phone Visit/ob
+Patient 468,11-20-2025,HPW217,Finished,N,N,N,10:25:00,15,Same day
+Patient 469,11-20-2025,HPW217,Finished,N,N,N,11:15:00,30,Prebooked visit
+Patient 470,11-20-2025,HPW217,,N,N,N,15:30:00,5,Cancelled
+Patient 471,11-20-2025,HPW217,,N,N,N,15:45:00,5,Cancelled
+Patient 472,11-20-2025,HPW217,,N,Y,N,10:00:00,5,Cancelled
+Patient 473,11-20-2025,HPW217,Finished,N,N,N,10:40:00,15,Same day
+Patient 474,11-20-2025,HPW217,Finished,N,N,N,10:35:00,15,Same day
+Patient 475,11-20-2025,HPW218,Finished,N,N,N,09:40:00,5,
+Patient 476,11-20-2025,HPW218,Finished,N,N,N,10:00:00,5,
+Patient 477,11-20-2025,HPW219,,N,N,N,10:55:00,5,
+Patient 478,11-20-2025,HPW221,Finished,N,N,N,11:00:00,30,Prebooked visit
+Patient 479,11-20-2025,HPW221,,N,N,N,10:00:00,5,Cancelled
+Patient 480,11-20-2025,HPW221,Finished,N,N,N,09:15:00,15,
+Patient 481,11-20-2025,HPW221,Finished,N,N,N,10:45:00,15,Walk In
+Patient 482,11-20-2025,HPW222,Finished,N,N,N,11:00:00,30,Prebooked
+Patient 483,11-20-2025,HPW222,Finished,N,N,N,10:30:00,30,Prebooked
+Patient 484,11-20-2025,HPW222,Finished,N,N,N,10:00:00,30,Same Days 
+Patient 485,11-21-2025,HPW201,Finished,N,N,N,13:05:00,5,
+Patient 486,11-21-2025,HPW201,Finished,N,N,N,10:20:00,5,
+Patient 487,11-21-2025,HPW201,Finished,N,N,N,09:40:00,5,
+Patient 488,11-21-2025,HPW201,Finished,N,N,N,10:15:00,5,
+Patient 489,11-21-2025,HPW201,,N,Y,N,10:00:00,5,
+Patient 490,11-21-2025,HPW201,Finished,N,N,N,09:00:00,5,
+Patient 491,11-21-2025,HPW201,,N,Y,N,11:00:00,60,Prebooked
+Patient 492,11-21-2025,HPW201,Finished,N,N,N,13:00:00,5,
+Patient 493,11-21-2025,HPW201,No Show,N,N,Y,08:30:00,45,CRHI
+Patient 494,11-21-2025,HPW201,No Show,N,N,Y,08:50:00,45,CRHI
+Patient 495,11-21-2025,HPW201,Finished,N,N,N,13:10:00,5,
+Patient 496,11-21-2025,HPW201,Finished,N,N,N,09:55:00,5,
+Patient 497,11-21-2025,HPW201,Finished,N,N,N,09:45:00,5,
+Patient 498,11-21-2025,HPW203,Finished,N,N,N,13:55:00,5,Chronic Disease
+Patient 499,11-21-2025,HPW203,Finished,N,N,N,14:30:00,30,Same day
+Patient 500,11-21-2025,HPW203,Finished,N,N,N,11:00:00,60,Prebooked visit
+Patient 501,11-21-2025,HPW203,No Show,N,N,Y,10:00:00,60,Prebooked visit
+Patient 502,11-21-2025,HPW203,Finished,N,N,N,13:45:00,5,
+Patient 503,11-21-2025,HPW203,Finished,N,N,N,11:40:00,5,
+Patient 504,11-21-2025,HPW203,Finished,N,N,N,15:20:00,5,
+Patient 505,11-21-2025,HPW203,Finished,N,N,N,13:50:00,5,
+Patient 506,11-21-2025,HPW205,,N,Y,N,14:00:00,60,Prebooked visit
+Patient 507,11-21-2025,HPW205,Finished,N,N,N,13:00:00,30,Same day
+Patient 508,11-21-2025,HPW206,Finished,N,N,N,10:35:00,5,
+Patient 509,11-21-2025,HPW206,Finished,N,N,N,10:40:00,5,
+Patient 510,11-21-2025,HPW206,Finished,N,N,N,15:00:00,15,Nurse visit
+Patient 511,11-21-2025,HPW206,Finished,N,N,N,10:15:00,5,
+Patient 512,11-21-2025,HPW206,Finished,N,N,N,10:45:00,5,
+Patient 513,11-21-2025,HPW206,,N,Y,N,11:30:00,5,Phone visit
+Patient 514,11-21-2025,HPW206,Finished,N,N,N,15:15:00,15,Nurse visit- Flu shot /ob
+Patient 515,11-21-2025,HPW206,Finished,N,N,N,15:20:00,15,Nurse visit- Flu shot /ob
+Patient 516,11-21-2025,HPW206,Finished,N,N,N,08:40:00,30,Prebooked visit
+Patient 517,11-21-2025,HPW206,Finished,N,N,N,08:55:00,30,Prebooked visit
+Patient 518,11-21-2025,HPW206,No Show,N,N,Y,09:05:00,30,Prebooked visit
+Patient 519,11-21-2025,HPW206,No Show,N,N,Y,09:10:00,30,Prebooked visit
+Patient 520,11-21-2025,HPW206,Finished,N,N,N,09:20:00,30,Prebooked visit
+Patient 521,11-21-2025,HPW207,Finished,N,N,N,14:00:00,30,Prebooked
+Patient 522,11-21-2025,HPW207,Finished,N,N,N,09:30:00,30,Prebooked
+Patient 523,11-21-2025,HPW207,Finished,N,N,N,10:30:00,30,Prebooked
+Patient 524,11-21-2025,HPW207,Finished,N,N,N,10:00:00,30,Prebooked
+Patient 525,11-21-2025,HPW207,Finished,N,N,N,11:00:00,30,Phone Call
+Patient 526,11-21-2025,HPW208,Arrived,N,N,N,10:10:00,10,Prebooked
+Patient 527,11-21-2025,HPW208,,N,N,N,10:00:00,10,Cancelled 
+Patient 528,11-21-2025,HPW209,Finished,N,N,N,10:30:00,30,Prebooked
+Patient 529,11-21-2025,HPW209,No Show,N,N,Y,09:40:00,50,Prebooked
+Patient 530,11-21-2025,HPW209,,N,N,N,11:00:00,10,Cancelled 
+Patient 531,11-21-2025,HPW209,Finished,N,N,N,08:30:00,30,Prebooked
+Patient 532,11-21-2025,HPW209,,N,N,N,15:30:00,10,Cancelled 
+Patient 533,11-21-2025,HPW209,Finished,N,N,N,09:00:00,40,Prebooked
+Patient 534,11-21-2025,HPW209,Finished,N,N,N,15:00:00,30,Prebooked
+Patient 535,11-21-2025,HPW209,Finished,N,N,N,11:00:00,30,Phone Call
+Patient 536,11-21-2025,HPW209,Finished,N,N,N,14:30:00,30,Prebooked
+Patient 537,11-21-2025,HPW209,Finished,N,N,N,14:00:00,30,Prebooked
+Patient 538,11-21-2025,HPW212,Finished,N,N,N,08:40:00,5,Admin Time
+Patient 539,11-21-2025,HPW212,Finished,N,N,N,14:35:00,60,Prebooked visit
+Patient 540,11-21-2025,HPW212,Finished,N,N,N,14:50:00,5,
+Patient 541,11-21-2025,HPW212,Confirmed,N,Y,N,11:30:00,30,Prebooked Visit/ob
+Patient 542,11-21-2025,HPW212,Finished,N,N,N,14:15:00,5,
+Patient 543,11-21-2025,HPW212,Finished,N,N,N,14:10:00,5,
+Patient 544,11-21-2025,HPW212,Finished,N,N,N,14:05:00,30,Prebooked visit
+Patient 545,11-21-2025,HPW212,Finished,N,N,N,14:20:00,5,
+Patient 546,11-21-2025,HPW212,Finished,N,N,N,14:25:00,5,
+Patient 547,11-21-2025,HPW212,Finished,N,N,N,14:30:00,5,
+Patient 548,11-21-2025,HPW214,Finished,N,N,N,09:40:00,10,Phone Call
+Patient 549,11-21-2025,HPW214,Finished,N,N,N,14:00:00,10,Phone Call
+Patient 550,11-21-2025,HPW214,Finished,N,N,N,11:10:00,10,Phone Call
+Patient 551,11-21-2025,HPW214,Finished,N,N,N,08:40:00,40,Prebooked
+Patient 552,11-21-2025,HPW215,Finished,N,N,N,09:30:00,30,Prebooked visit
+Patient 553,11-21-2025,HPW215,,N,N,N,15:00:00,5,Cancelled
+Patient 554,11-21-2025,HPW215,Confirmed,N,Y,N,13:00:00,30,Prebooked visit
+Patient 555,11-21-2025,HPW215,,N,N,N,09:05:00,5,Cancelled
+Patient 556,11-21-2025,HPW215,No Show,N,N,Y,10:00:00,30,Well Baby
+Patient 557,11-21-2025,HPW215,,N,Y,N,10:30:00,30,CRHIK
+Patient 558,11-21-2025,HPW215,,N,Y,N,10:40:00,30,CRHIK
+Patient 559,11-21-2025,HPW215,,N,Y,N,10:15:00,30,CRHIK
+Patient 560,11-21-2025,HPW217,Finished,N,N,N,11:25:00,5,Admin Time
+Patient 561,11-21-2025,HPW218,Finished,N,N,N,13:00:00,30,Prebooked visit
+Patient 562,11-21-2025,HPW218,Finished,N,N,N,14:30:00,15,Same day
+Patient 563,11-21-2025,HPW218,Finished,N,N,N,13:20:00,5,
+Patient 564,11-21-2025,HPW218,Finished,N,N,N,13:15:00,15,Nurse visit
+Patient 565,11-21-2025,HPW218,Finished,N,N,N,08:50:00,30,Prebooked visit
+Patient 566,11-21-2025,HPW220,Finished,N,N,N,10:00:00,20,Prebooked
+Patient 567,11-21-2025,HPW220,,N,Y,N,14:30:00,20,Prebooked
+Patient 568,11-21-2025,HPW220,No Show,N,N,Y,14:00:00,20,Prebooked
+Patient 569,11-21-2025,HPW221,Finished,N,N,N,11:30:00,5,
+Patient 570,11-21-2025,HPW222,,N,N,N,14:30:00,10,Cancelled 
+Patient 571,11-21-2025,HPW222,Finished,N,N,N,10:30:00,10,Phone Call
+Patient 572,11-21-2025,HPW222,Finished,N,N,N,13:30:00,30,Same Days 
+Patient 573,11-21-2025,HPW222,Finished,N,N,N,08:30:00,30,Prebooked
+Patient 574,11-21-2025,HPW222,Finished,N,N,N,14:00:00,30,Prebooked

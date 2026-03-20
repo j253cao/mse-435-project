@@ -1,0 +1,84 @@
+{
+  "Week1_instance": {
+    "active_appointments": 427,
+    "providers": 20,
+    "days": 5,
+    "original_provider_day_blocks": 64,
+    "refined_serial_blocks": 94,
+    "duration_slot_counts": {
+      "1": 224,
+      "2": 182,
+      "3": 8,
+      "4": 11,
+      "6": 1,
+      "8": 1
+    },
+    "appointments_by_day": {
+      "2025-11-10": 125,
+      "2025-11-11": 4,
+      "2025-11-12": 108,
+      "2025-11-13": 120,
+      "2025-11-14": 70
+    },
+    "provider_overlaps_in_input": 73,
+    "appointments_touching_admin_or_lunch_blocks": 44
+  },
+  "Week2_instance": {
+    "active_appointments": 499,
+    "providers": 23,
+    "days": 5,
+    "original_provider_day_blocks": 79,
+    "refined_serial_blocks": 122,
+    "duration_slot_counts": {
+      "1": 296,
+      "2": 171,
+      "3": 12,
+      "4": 20
+    },
+    "appointments_by_day": {
+      "2025-11-17": 141,
+      "2025-11-18": 132,
+      "2025-11-19": 104,
+      "2025-11-20": 42,
+      "2025-11-21": 80
+    },
+    "provider_overlaps_in_input": 110,
+    "appointments_touching_admin_or_lunch_blocks": 58
+  },
+  "Week1_results": {
+    "week": "Week1",
+    "active_appointments": 427,
+    "original_provider_day_blocks": 64,
+    "refined_serial_blocks": 94,
+    "initial_columns": 94,
+    "final_column_pool_size": 160,
+    "cg_iterations": 8,
+    "final_lp_objective": 51.9,
+    "final_integer_objective": 51.9,
+    "final_room_switch_distance": 339.7000000000002,
+    "final_preference_penalty": 318.7000000000001,
+    "provider_overlaps_in_input": 73,
+    "appointments_touching_admin_or_lunch_blocks": 44,
+    "runtime_seconds": 176.87226419999934,
+    "validated_small_blocks": 74,
+    "validation_mismatches": 0
+  },
+  "Week2_results": {
+    "week": "Week2",
+    "active_appointments": 499,
+    "original_provider_day_blocks": 79,
+    "refined_serial_blocks": 122,
+    "initial_columns": 122,
+    "final_column_pool_size": 247,
+    "cg_iterations": 13,
+    "final_lp_objective": 118.79999999999998,
+    "final_integer_objective": 118.8,
+    "final_room_switch_distance": 600.9000000000003,
+    "final_preference_penalty": 525.3000000000004,
+    "provider_overlaps_in_input": 110,
+    "appointments_touching_admin_or_lunch_blocks": 58,
+    "runtime_seconds": 311.3945915000004,
+    "validated_small_blocks": 99,
+    "validation_mismatches": 0
+  }
+}
