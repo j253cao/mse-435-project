@@ -1,0 +1,9 @@
+week,policy,room_switch_distance,preference_penalty,blocked_appointments,total_appointments,blocked_ratio
+Week1,baseline,339.7000000000002,318.7000000000001,,,
+Week1,single_room_policy,0.0,184.1000000000001,,,
+Week1,cluster_policy_threshold_2_0,160.60000000000016,260.4000000000002,,,
+Week1,blocked_days_policy_auto_strong,270.5000000000001,223.30000000000015,98.0,427.0,0.22950819672131148
+Week2,baseline,600.9000000000003,525.3000000000004,,,
+Week2,single_room_policy,0.0,516.5000000000003,,,
+Week2,cluster_policy_threshold_2_0,245.00000000000006,663.5000000000007,,,
+Week2,blocked_days_policy_auto_strong,408.2000000000003,386.90000000000003,127.0,499.0,0.2545090180360721

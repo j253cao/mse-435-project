@@ -1,0 +1,110 @@
+{
+  "config": {
+    "cluster_threshold": 2.0,
+    "blocked_days_policy": "auto_strong_round_robin_weekday",
+    "source_run": "C:\\Users\\johnn\\Downloads\\part 3-20260320T210954Z-3-001\\part 3\\outputs\\run_20260320_173628"
+  },
+  "Week1": {
+    "week": "Week1",
+    "policy_design_reasoning": {
+      "single_room_anchor_rule": "Use provider-day modal room as anchor for deterministic and reproducible single-room behavior while preserving original appointment timing.",
+      "cluster_threshold_choice": "Threshold 2.0 balances strict locality (<=1.0 can over-constrain) and overly loose movement (<=3.0 often behaves close to unconstrained).",
+      "blocked_days_auto_strong": "Round-robin weekday blocking is a stress-test policy that intentionally creates broad availability pressure instead of reflecting baseline operations.",
+      "comparison_fairness": "All policies are evaluated as post-processing transforms on the same baseline schedule to isolate policy effects without rerunning optimization."
+    },
+    "baseline": {
+      "room_switch_distance": 339.7000000000002,
+      "preference_penalty": 318.7000000000001
+    },
+    "single_room_policy": {
+      "room_switch_distance": 0.0,
+      "preference_penalty": 184.1000000000001
+    },
+    "cluster_policy_threshold_2_0": {
+      "room_switch_distance": 160.60000000000016,
+      "preference_penalty": 260.4000000000002
+    },
+    "blocked_days_policy_auto_strong": {
+      "room_switch_distance": 270.5000000000001,
+      "preference_penalty": 223.30000000000015,
+      "blocked_appointments": 98,
+      "total_appointments": 427,
+      "blocked_ratio": 0.22950819672131148
+    },
+    "blocked_days_assignment": {
+      "HPW101": "Monday",
+      "HPW102": "Tuesday",
+      "HPW103": "Wednesday",
+      "HPW104": "Thursday",
+      "HPW105": "Friday",
+      "HPW106": "Monday",
+      "HPW107": "Tuesday",
+      "HPW108": "Wednesday",
+      "HPW109": "Thursday",
+      "HPW110": "Friday",
+      "HPW111": "Monday",
+      "HPW112": "Tuesday",
+      "HPW113": "Wednesday",
+      "HPW114": "Thursday",
+      "HPW115": "Friday",
+      "HPW116": "Monday",
+      "HPW117": "Tuesday",
+      "HPW118": "Wednesday",
+      "HPW119": "Thursday",
+      "HPW120": "Friday"
+    }
+  },
+  "Week2": {
+    "week": "Week2",
+    "policy_design_reasoning": {
+      "single_room_anchor_rule": "Use provider-day modal room as anchor for deterministic and reproducible single-room behavior while preserving original appointment timing.",
+      "cluster_threshold_choice": "Threshold 2.0 balances strict locality (<=1.0 can over-constrain) and overly loose movement (<=3.0 often behaves close to unconstrained).",
+      "blocked_days_auto_strong": "Round-robin weekday blocking is a stress-test policy that intentionally creates broad availability pressure instead of reflecting baseline operations.",
+      "comparison_fairness": "All policies are evaluated as post-processing transforms on the same baseline schedule to isolate policy effects without rerunning optimization."
+    },
+    "baseline": {
+      "room_switch_distance": 600.9000000000003,
+      "preference_penalty": 525.3000000000004
+    },
+    "single_room_policy": {
+      "room_switch_distance": 0.0,
+      "preference_penalty": 516.5000000000003
+    },
+    "cluster_policy_threshold_2_0": {
+      "room_switch_distance": 245.00000000000006,
+      "preference_penalty": 663.5000000000007
+    },
+    "blocked_days_policy_auto_strong": {
+      "room_switch_distance": 408.2000000000003,
+      "preference_penalty": 386.90000000000003,
+      "blocked_appointments": 127,
+      "total_appointments": 499,
+      "blocked_ratio": 0.2545090180360721
+    },
+    "blocked_days_assignment": {
+      "HPW201": "Monday",
+      "HPW202": "Tuesday",
+      "HPW203": "Wednesday",
+      "HPW204": "Thursday",
+      "HPW205": "Friday",
+      "HPW206": "Monday",
+      "HPW207": "Tuesday",
+      "HPW208": "Wednesday",
+      "HPW209": "Thursday",
+      "HPW210": "Friday",
+      "HPW211": "Monday",
+      "HPW212": "Tuesday",
+      "HPW213": "Wednesday",
+      "HPW214": "Thursday",
+      "HPW215": "Friday",
+      "HPW216": "Monday",
+      "HPW217": "Tuesday",
+      "HPW218": "Wednesday",
+      "HPW219": "Thursday",
+      "HPW220": "Friday",
+      "HPW221": "Monday",
+      "HPW222": "Tuesday",
+      "HPW223": "Wednesday"
+    }
+  }
+}
