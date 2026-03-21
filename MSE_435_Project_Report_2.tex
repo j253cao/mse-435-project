@@ -1,4 +1,5 @@
 \documentclass[12pt]{article}
+\usepackage{newtxtext,newtxmath}
 \usepackage{amsmath, amssymb}
 \usepackage{geometry}
 \usepackage{booktabs}
@@ -415,6 +416,7 @@ like-for-like comparisons.
   round-robin pattern (Monday to Friday). This is intentionally a stress-test policy, not a
   representation of baseline operations, and is used to quantify sensitivity to broad availability
   restrictions.
+
 \end{itemize}
 
 For comparability with the baseline, room-switch distance and preference penalty are computed
@@ -543,6 +545,41 @@ underlying appointment timing and demand are fixed. The single-room policy elimi
 room switches by construction but can still trade off against preference structure. The cluster
 policy reduces switching relative to baseline while preserving some room flexibility, and the
 blocked-days stress test quantifies the appointment share affected by strong availability limits.
+
+\subsection*{Admin Time, Overbooking, and Duration Uncertainty}
+
+\textbf{Policy d (Admin time for extenuating circumstances).} We use the same administrative and lunch blocks as in the main implementation (morning admin 9:00--9:30 Mon--Thu and 8:00--8:30 Fri, noon admin, lunch closure, afternoon admin). First, we count how many appointments in the baseline schedule have any 15-minute slot overlapping those blocks (should be zero if the optimizer respected blocked time). Second, for each provider-day we count scheduled appointments; we label a provider-day as \emph{congested} if its count is at least the median across all provider-days and at least five appointments. We then report a \emph{potential} admin-time capacity figure: congested provider-days $\times$ four 15-minute slots per day, interpreted as rough headroom if morning admin were opened for overflow under stress. This quantifies where extenuating use of admin time would matter most, without actually moving visits into those intervals.
+
+\textbf{Policy e (Overbooking, no-shows).} From each week's appointment file we compute the fraction of active (non-cancelled, non-deleted) rows marked as no-shows, denoted $r$. We treat the baseline schedule as having $N$ booked slots. Expected arrivals are $N(1-r)$; to fill nominal capacity in expectation, a standard rule is to scale bookings by $1/(1-r)$. We report $\lceil N/(1-r) - N\rceil$ as the recommended number of \emph{additional} slots to add, a planning-level overbook count. Room and provider feasibility of those extra slots is not re-checked here; the metric isolates the magnitude implied by historical no-show behavior.
+
+\textbf{Policy f (Duration uncertainty).} For each appointment in the baseline schedule we extend its end time by a buffer: one extra 15-minute slot (+15 min), two slots (+30 min), or a 20\% increase in slot length (rounded up). Within each \emph{serial chain} (refined provider-day block the same units used in column generation), we sort visits by start time and count \emph{pairwise overlaps}: consecutive visits in that chain where the buffered end of the earlier visit is still after the start of the next. That count measures how often longer-than-nominal exams would force the same provider's sequence to overlap itself. The ratio of overlaps to the number of consecutive pairs in all chains summarizes schedule fragility under duration variability.
+
+Table~\ref{tab:policy_def} summarizes the results. Admin time offers 156--160 potential overflow slots across congested provider-days; baseline schedules do not use admin blocks. No-show rates of 7.3\% and 7.8\% imply recommended overbooks of 34 and 43 additional slots for Weeks 1 and 2. Duration buffers of +15 or +30 minutes yield overlap ratios of roughly 62--75\% within serial chains, so the timing layout is sensitive to variability and would benefit from built-in slack or resequencing in a fuller stochastic model.
+
+\begin{table}[h]
+  \centering
+  \caption{Policy validation (d, e, f): admin time, overbooking, duration uncertainty.}
+  \label{tab:policy_def}
+  \begin{tabular}{lrr}
+    \toprule
+    Metric & Week 1 & Week 2 \\
+    \midrule
+    \multicolumn{3}{l}{\textit{Policy d: Admin time}} \\
+    Congested provider-days                    & 39    & 40    \\
+    Admin capacity slots (potential)           & 156   & 160   \\
+    \midrule
+    \multicolumn{3}{l}{\textit{Policy e: Overbooking}} \\
+    No-show rate (\%)                          & 7.3   & 7.8   \\
+    Recommended additional slots               & 34    & 43    \\
+    \midrule
+    \multicolumn{3}{l}{\textit{Policy f: Duration uncertainty}} \\
+    Overlaps with +15 min buffer               & 206   & 251   \\
+    Overlap ratio (+15 min, \%)                & 61.9  & 66.6  \\
+    Overlaps with +30 min buffer               & 238   & 281   \\
+    Overlap ratio (+30 min, \%)                & 71.5  & 74.5  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection*{Interpretation}
 
