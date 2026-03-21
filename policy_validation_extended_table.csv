@@ -1,0 +1,9 @@
+week,policy,room_switch_distance,preference_penalty,appointments_touching_admin,congested_provider_days,total_scheduled,no_show_rate,recommended_additional_slots,overlaps_buffer_1,overlaps_buffer_2
+Week1,baseline,339.7000000000002,318.7000000000001,,,,,,,
+Week1,policy_d_admin_time,339.7000000000002,318.7000000000001,0.0,39.0,,,,,
+Week1,policy_e_overbooking,,,,,427.0,0.07259953161592506,34.0,,
+Week1,policy_f_duration_uncertainty,339.7000000000002,,,,,,,206.0,238.0
+Week2,baseline,600.9000000000003,525.3000000000004,,,,,,,
+Week2,policy_d_admin_time,600.9000000000003,525.3000000000004,0.0,40.0,,,,,
+Week2,policy_e_overbooking,,,,,499.0,0.0781563126252505,43.0,,
+Week2,policy_f_duration_uncertainty,600.9000000000003,,,,,,,251.0,281.0
