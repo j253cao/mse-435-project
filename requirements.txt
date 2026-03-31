@@ -3,3 +3,4 @@ pandas
 scipy
 python-docx
 pymupdf
+matplotlib
